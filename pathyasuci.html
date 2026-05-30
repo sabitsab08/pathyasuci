@@ -1,0 +1,1045 @@
+<!DOCTYPE html>
+<html lang="bn" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>পাঠ্যসূচি</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300;400;500;600&family=Plus+Jakarta+Sans:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <link rel="stylesheet" href="css/home-style.css">
+</head>
+<body>
+
+<!-- OVERLAY (mobile) -->
+<div class="sidebar-overlay" id="overlay"></div>
+
+<!-- ══════ SIDEBAR ══════ -->
+<aside class="sidebar" id="sidebar">
+  <div class="logo">
+    <div class="logo-mark">
+      <div class="logo-icon"><span class="material-symbols-outlined">menu_book</span></div>
+      <span class="logo-name">পাঠ্যসূচি</span>
+    </div>
+    <div class="logo-tagline">শিক্ষার পথচলা</div>
+  </div>
+
+  <div class="sidebar-search">
+    <div class="search-box">
+      <span class="material-symbols-outlined">search</span>
+      <input type="text" id="sidebar-search-input" placeholder="খুঁজুন..." autocomplete="off" />
+    </div>
+  </div>
+
+  <nav>
+    <div class="section-label">মূল মেনু</div>
+    <div class="nav-item active" data-page="dashboard">
+      <span class="material-symbols-outlined">dashboard</span> Dashboard
+    </div>
+    <div class="nav-item" data-page="courses">
+      <span class="material-symbols-outlined">library_books</span> Courses
+    </div>
+    <div class="nav-item" data-page="syllabus">
+      <span class="material-symbols-outlined">format_list_bulleted</span> Syllabus
+    </div>
+    <div class="nav-item" data-page="progress">
+      <span class="material-symbols-outlined">trending_up</span> Progress
+    </div>
+    <div class="nav-item" data-page="mygoal">
+      <span class="material-symbols-outlined">target</span> My Goal
+    </div>
+  </nav>
+
+  <div class="sidebar-footer">
+    <div class="user-card">
+      <div class="avatar">JH</div>
+      <div>
+        <div class="user-name">Jayed H.</div>
+        <div class="user-role">২য় বর্ষ,রসায়ন</div>
+      </div>
+    </div>
+  </div>
+</aside>
+
+<!-- ══════ TOPBAR (mobile) ══════ -->
+<header class="topbar">
+  <div class="icon-btn" id="menu-btn">
+    <span class="material-symbols-outlined" style="font-size:22px">menu</span>
+  </div>
+  <div class="topbar-logo">পাঠ্যসূচি</div>
+  <div class="icon-btn" id="mobile-search-btn">
+    <span class="material-symbols-outlined" style="font-size:20px">search</span>
+  </div>
+  <div class="icon-btn" id="mobile-dark-btn">
+    <span class="material-symbols-outlined" style="font-size:20px" id="mobile-dark-icon">dark_mode</span>
+  </div>
+</header>
+
+<!-- ══════ MAIN ══════ -->
+<main class="main">
+
+  <!-- top controls (desktop) -->
+  <div class="top-controls">
+    <div class="top-search">
+      <span class="material-symbols-outlined">search</span>
+      <input type="text" id="top-search-input" placeholder="কোর্স, অধ্যায়, লক্ষ্য খুঁজুন..." autocomplete="off" />
+    </div>
+    <div class="dark-toggle" id="dark-toggle" title="Dark mode toggle">
+      <span class="material-symbols-outlined" id="dark-icon">dark_mode</span>
+    </div>
+  </div>
+
+  <!-- search results panel -->
+  <div class="search-results" id="search-results"></div>
+
+  <!-- ── DASHBOARD ── -->
+  <div class="page active" id="page-dashboard">
+    <div class="page-header">
+      <h1>স্বাগতম, Jayed 👋</h1>
+      <p>আজ আপনার ৩টি ক্লাস আছে। চলুন শুরু করি।</p>
+    </div>
+    <div class="stats-grid">
+      <div class="stat-card">
+        <div class="stat-icon-row">
+          <div class="stat-icon" style="background:var(--green-light)">
+            <span class="material-symbols-outlined" style="color:var(--green)">library_books</span>
+          </div>
+        </div>
+        <div class="stat-label">মোট কোর্স</div>
+        <div class="stat-value">8</div>
+        <div class="stat-sub">৩টি চলমান</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-icon-row">
+          <div class="stat-icon" style="background:var(--blue-light)">
+            <span class="material-symbols-outlined" style="color:var(--blue)">check_circle</span>
+          </div>
+        </div>
+        <div class="stat-label">সম্পন্ন অধ্যায়</div>
+        <div class="stat-value">47</div>
+        <div class="stat-sub">+5 এই সপ্তাহে</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-icon-row">
+          <div class="stat-icon" style="background:var(--purple-light)">
+            <span class="material-symbols-outlined" style="color:var(--purple)">target</span>
+          </div>
+        </div>
+        <div class="stat-label">সিলেবাস সম্পন্ন</div>
+        <div class="stat-value" id="dash-overall-pct">0%</div>
+        <div class="stat-sub" id="dash-overall-sub">লোড হচ্ছে...</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-icon-row">
+          <div class="stat-icon" style="background:var(--amber-light)">
+            <span class="material-symbols-outlined" style="color:var(--amber)">schedule</span>
+          </div>
+        </div>
+        <div class="stat-label">পড়ার সময়</div>
+        <div class="stat-value">24h</div>
+        <div class="stat-sub">এই মাসে</div>
+      </div>
+    </div>
+    <div class="two-col">
+      <div class="card">
+        <div class="card-title"><span class="material-symbols-outlined">bolt</span> সাম্প্রতিক কার্যক্রম</div>
+        <div class="activity-item"><div class="act-dot" style="background:#1D9E75"></div><div class="act-text">Pharmacology Ch.6 শেষ করেছেন</div><div class="act-time">১ ঘন্টা আগে</div></div>
+        <div class="activity-item"><div class="act-dot" style="background:#378ADD"></div><div class="act-text">MCQ Practice — 18/20</div><div class="act-time">৩ ঘন্টা আগে</div></div>
+        <div class="activity-item"><div class="act-dot" style="background:#7F77DD"></div><div class="act-text">Biochemistry Notes আপলোড</div><div class="act-time">গতকাল</div></div>
+        <div class="activity-item"><div class="act-dot" style="background:#EF9F27"></div><div class="act-text">Goal "ফার্মাকোলজি শেষ" আপডেট</div><div class="act-time">গতকাল</div></div>
+      </div>
+      <div class="card">
+        <div class="card-title"><span class="material-symbols-outlined">event</span> আসন্ন পরীক্ষা</div>
+        <div class="upcoming-item"><div class="date-badge">২৫ মে</div><div><div class="upcoming-title">Pharmacology Mid</div><div class="upcoming-sub">Chapter 1–8 · সকাল ১০টা</div></div></div>
+        <div class="upcoming-item"><div class="date-badge">২ জুন</div><div><div class="upcoming-title">Biochemistry Viva</div><div class="upcoming-sub">Metabolism Unit</div></div></div>
+        <div class="upcoming-item"><div class="date-badge">১০ জুন</div><div><div class="upcoming-title">Pathology Final</div><div class="upcoming-sub">Full Syllabus</div></div></div>
+        <div class="upcoming-item"><div class="date-badge">১৮ জুন</div><div><div class="upcoming-title">Microbiology Practical</div><div class="upcoming-sub">Lab Hall B</div></div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── COURSES ── -->
+  <div class="page" id="page-courses">
+    <div class="page-header">
+      <h1>Courses</h1>
+      <p>একটি কোর্স select করলে details দেখাবে</p>
+    </div>
+
+    <div class="courses-wrap">
+
+      <!-- LEFT COL -->
+      <div style="display:flex;flex-direction:column;gap:18px;">
+
+        <!-- Chemistry -->
+        <div class="dept-group">
+          <div class="dept-label"><i class="fa-solid fa-flask" style="margin-right:5px"></i>Chemistry</div>
+
+          <div class="course-row" data-href="course-ch7201.html" data-code="CH 7201" data-name="Chemical Thermodynamics" data-credits="3" data-icon="fa-solid fa-fire-flame-curved" data-color="#E1F5EE" data-icolor="#1D9E75">
+            <div class="course-icon" style="background:#E1F5EE"><i class="fa-solid fa-fire-flame-curved" style="color:#1D9E75"></i></div>
+            <div class="course-info">
+              <div class="course-code">CH 7201</div>
+              <div class="course-name">Chemical Thermodynamics</div>
+            </div>
+            <span class="credit-badge">3 cr</span>
+          </div>
+
+          <div class="course-row" data-href="course-ch7202.html" data-code="CH 7202" data-name="Electrochemistry" data-credits="3" data-icon="fa-solid fa-bolt" data-color="#E6F1FB" data-icolor="#378ADD">
+            <div class="course-icon" style="background:#E6F1FB"><i class="fa-solid fa-bolt" style="color:#378ADD"></i></div>
+            <div class="course-info">
+              <div class="course-code">CH 7202</div>
+              <div class="course-name">Electrochemistry</div>
+            </div>
+            <span class="credit-badge">3 cr</span>
+          </div>
+
+          <div class="course-row" data-href="course-ch7221.html" data-code="CH 7221" data-name="Organic Chemistry II" data-credits="3" data-icon="fa-solid fa-atom" data-color="#EEEDFE" data-icolor="#7F77DD">
+            <div class="course-icon" style="background:#EEEDFE"><i class="fa-solid fa-atom" style="color:#7F77DD"></i></div>
+            <div class="course-info">
+              <div class="course-code">CH 7221</div>
+              <div class="course-name">Organic Chemistry II</div>
+            </div>
+            <span class="credit-badge">3 cr</span>
+          </div>
+
+          <div class="course-row" data-href="course-ch7222.html" data-code="CH 7222" data-name="Stereochemistry" data-credits="3" data-icon="fa-solid fa-rotate" data-color="#FBEAF0" data-icolor="#D4537E">
+            <div class="course-icon" style="background:#FBEAF0"><i class="fa-solid fa-rotate" style="color:#D4537E"></i></div>
+            <div class="course-info">
+              <div class="course-code">CH 7222</div>
+              <div class="course-name">Stereochemistry</div>
+            </div>
+            <span class="credit-badge">3 cr</span>
+          </div>
+
+          <div class="course-row" data-href="course-ch7241.html" data-code="CH 7241" data-name="Chemistry of the Representative Elements" data-credits="4" data-icon="fa-solid fa-table-cells" data-color="#FAEEDA" data-icolor="#EF9F27">
+            <div class="course-icon" style="background:#FAEEDA"><i class="fa-solid fa-table-cells" style="color:#EF9F27"></i></div>
+            <div class="course-info">
+              <div class="course-code">CH 7241</div>
+              <div class="course-name">Chemistry of Representative Elements</div>
+            </div>
+            <span class="credit-badge">4 cr</span>
+          </div>
+        </div>
+
+        <!-- Chemistry Lab -->
+        <div class="dept-group">
+          <div class="dept-label"><i class="fa-solid fa-flask-vial" style="margin-right:5px"></i>Chemistry Lab</div>
+
+          <div class="course-row" data-href="course-chl202.html" data-code="CHL 202" data-name="Physical Chemistry Laboratory I" data-credits="2" data-icon="fa-solid fa-microscope" data-color="#EAF3DE" data-icolor="#639922">
+            <div class="course-icon" style="background:#EAF3DE"><i class="fa-solid fa-microscope" style="color:#639922"></i></div>
+            <div class="course-info">
+              <div class="course-code">CHL 202</div>
+              <div class="course-name">Physical Chemistry Laboratory I</div>
+            </div>
+            <span class="credit-badge">2 cr</span>
+          </div>
+
+          <div class="course-row" data-href="course-chl242.html" data-code="CHL 242" data-name="Quantitative Inorganic Analysis" data-credits="4" data-icon="fa-solid fa-vials" data-color="#E1F5EE" data-icolor="#1D9E75">
+            <div class="course-icon" style="background:#E1F5EE"><i class="fa-solid fa-vials" style="color:#1D9E75"></i></div>
+            <div class="course-info">
+              <div class="course-code">CHL 242</div>
+              <div class="course-name">Quantitative Inorganic Analysis</div>
+            </div>
+            <span class="credit-badge">4 cr</span>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- RIGHT COL -->
+      <div style="display:flex;flex-direction:column;gap:18px;">
+
+        <!-- Physics -->
+        <div class="dept-group">
+          <div class="dept-label"><i class="fa-solid fa-wave-square" style="margin-right:5px"></i>Physics</div>
+
+          <div class="course-row" data-href="course-pm7211.html" data-code="PM 7211" data-name="Optics" data-credits="2" data-icon="fa-solid fa-eye" data-color="#E6F1FB" data-icolor="#378ADD">
+            <div class="course-icon" style="background:#E6F1FB"><i class="fa-solid fa-eye" style="color:#378ADD"></i></div>
+            <div class="course-info">
+              <div class="course-code">PM 7211</div>
+              <div class="course-name">Optics</div>
+            </div>
+            <span class="credit-badge">2 cr</span>
+          </div>
+
+          <div class="course-row" data-href="course-pm7223.html" data-code="PM 7223" data-name="Electricity and Magnetism" data-credits="2" data-icon="fa-solid fa-magnet" data-color="#FBEAF0" data-icolor="#D4537E">
+            <div class="course-icon" style="background:#FBEAF0"><i class="fa-solid fa-magnet" style="color:#D4537E"></i></div>
+            <div class="course-info">
+              <div class="course-code">PM 7223</div>
+              <div class="course-name">Electricity and Magnetism</div>
+            </div>
+            <span class="credit-badge">2 cr</span>
+          </div>
+
+          <div class="course-row" data-href="course-pml204.html" data-code="PML 204" data-name="Physics Non-Major Practical" data-credits="2" data-icon="fa-solid fa-ruler-combined" data-color="#EEEDFE" data-icolor="#7F77DD">
+            <div class="course-icon" style="background:#EEEDFE"><i class="fa-solid fa-ruler-combined" style="color:#7F77DD"></i></div>
+            <div class="course-info">
+              <div class="course-code">PML 204</div>
+              <div class="course-name">Physics Non-Major Practical</div>
+            </div>
+            <span class="credit-badge">2 cr</span>
+          </div>
+        </div>
+
+        <!-- Mathematics -->
+        <div class="dept-group">
+          <div class="dept-label"><i class="fa-solid fa-square-root-variable" style="margin-right:5px"></i>Mathematics</div>
+
+          <div class="course-row" data-href="course-mam202a.html" data-code="MAM 202A" data-name="Calculus II" data-credits="2" data-icon="fa-solid fa-infinity" data-color="#FAEEDA" data-icolor="#EF9F27">
+            <div class="course-icon" style="background:#FAEEDA"><i class="fa-solid fa-infinity" style="color:#EF9F27"></i></div>
+            <div class="course-info">
+              <div class="course-code">MAM 202A</div>
+              <div class="course-name">Calculus II</div>
+            </div>
+            <span class="credit-badge">2 cr</span>
+          </div>
+
+          <div class="course-row" data-href="course-mam203a.html" data-code="MAM 203A" data-name="Ordinary Differential Equations" data-credits="2" data-icon="fa-solid fa-chart-line" data-color="#EAF3DE" data-icolor="#639922">
+            <div class="course-icon" style="background:#EAF3DE"><i class="fa-solid fa-chart-line" style="color:#639922"></i></div>
+            <div class="course-info">
+              <div class="course-code">MAM 203A</div>
+              <div class="course-name">Ordinary Differential Equations</div>
+            </div>
+            <span class="credit-badge">2 cr</span>
+          </div>
+
+          <div class="course-row" data-href="course-mam204a.html" data-code="MAM 204A" data-name="Numerical Analysis" data-credits="2" data-icon="fa-solid fa-calculator" data-color="#E1F5EE" data-icolor="#1D9E75">
+            <div class="course-icon" style="background:#E1F5EE"><i class="fa-solid fa-calculator" style="color:#1D9E75"></i></div>
+            <div class="course-info">
+              <div class="course-code">MAM 204A</div>
+              <div class="course-name">Numerical Analysis</div>
+            </div>
+            <span class="credit-badge">2 cr</span>
+          </div>
+
+          <div class="course-row" data-href="course-mtm205.html" data-code="MTM 205" data-name="Mathematical Methods" data-credits="2" data-icon="fa-solid fa-function" data-color="#E6F1FB" data-icolor="#378ADD">
+            <div class="course-icon" style="background:#E6F1FB"><i class="fa-solid fa-function" style="color:#378ADD"></i></div>
+            <div class="course-info">
+              <div class="course-code">MTM 205</div>
+              <div class="course-name">Mathematical Methods</div>
+            </div>
+            <span class="credit-badge">2 cr</span>
+          </div>
+        </div>
+
+      </div>
+    </div><!-- /courses-wrap -->
+
+    <!-- Detail Panel -->
+    <div class="course-detail-panel" id="course-detail-panel">
+      <div class="cdp-header">
+        <div class="cdp-icon" id="cdp-icon"></div>
+        <div>
+          <div class="cdp-title" id="cdp-title"></div>
+          <div class="cdp-code" id="cdp-code"></div>
+        </div>
+        <div class="cdp-close" id="cdp-close" title="বন্ধ করুন">
+          <span class="material-symbols-outlined">close</span>
+        </div>
+      </div>
+      <div id="cdp-body">
+        <div class="cdp-placeholder">
+          <i class="fa-solid fa-layer-group"></i>
+          এই কোর্সের details এখানে দেখাবে — তুমি বললে add করব।
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ── SYLLABUS ── -->
+  <div class="page" id="page-syllabus">
+    <div class="page-header">
+      <h1>Syllabus</h1>
+      <p>বিষয়ভিত্তিক পাঠ্যক্রমের বিস্তারিত</p>
+    </div>
+    <div class="syllabus-list">
+
+      <!-- ── CHEMISTRY ── -->
+      <div class="syl-dept-label"><i class="fa-solid fa-flask"></i> Chemistry</div>
+
+      <div class="syllabus-item open">
+        <div class="syllabus-header">
+          <div class="syl-icon" style="background:#E1F5EE"><i class="fa-solid fa-fire-flame-curved" style="color:#1D9E75;font-size:17px"></i></div>
+          <div>
+            <div class="syl-title">Chemical Thermodynamics</div>
+            <div class="syl-sub" data-sylhref="syllabus-ch7201.html">CH 7201 · 5 Units</div>
+          </div>
+          <span class="syl-credit-tag">3 cr</span>
+          <span class="material-symbols-outlined syl-goto">arrow_forward</span>
+        </div>
+        <div class="syllabus-topics">
+          <div class="topic-row topic-pending"><span class="material-symbols-outlined">radio_button_unchecked</span>Unit 1: Thermodynamics — First &amp; Second Laws, entropy, Helmholtz &amp; Gibbs functions, Maxwell's relations, Joule-Thomson expansion, chemical potential, fugacity, Gibbs-Duhem equation, thermodynamics of mixing</div>
+          <div class="topic-row topic-pending"><span class="material-symbols-outlined">radio_button_unchecked</span>Unit 2: Third Law of Thermodynamics — Nernst heat theorem, absolute entropy, applications &amp; limitations</div>
+          <div class="topic-row topic-pending"><span class="material-symbols-outlined">radio_button_unchecked</span>Unit 3: Phase Equilibrium — Phase rule, Clapeyron &amp; Clausius-Clapeyron equations, colligative properties (freezing point depression, boiling point elevation, osmotic pressure)</div>
+          <div class="topic-row topic-pending"><span class="material-symbols-outlined">radio_button_unchecked</span>Unit 4: Chemical Equilibrium — Gibbs function, equilibrium constant, Ellingham's diagram, thermodynamics of ATP, biological energy conversion</div>
+          <div class="topic-row topic-pending"><span class="material-symbols-outlined">radio_button_unchecked</span>Unit 5: Applications — Energy conversion, power plant efficiencies, fuels &amp; combustion, adiabatic flame temperature, ignition, flash point</div>
+        </div>
+      </div>
+
+      <div class="syllabus-item">
+        <div class="syllabus-header">
+          <div class="syl-icon" style="background:#E6F1FB"><i class="fa-solid fa-bolt" style="color:#378ADD;font-size:17px"></i></div>
+          <div>
+            <div class="syl-title">Electrochemistry</div>
+            <div class="syl-sub" data-sylhref="syllabus-ch7202.html">CH 7202 · 7 Units</div>
+          </div>
+          <span class="syl-credit-tag">3 cr</span>
+          <span class="material-symbols-outlined syl-goto">arrow_forward</span>
+        </div>
+        <div class="syllabus-topics">
+          <div class="topic-row topic-pending"><span class="material-symbols-outlined">radio_button_unchecked</span>Unit 1: Conductance — Specific &amp; molar conductance, Kohlrausch's law, transport number, applications in titrations &amp; biochemistry</div>
+          <div class="topic-row topic-pending"><span class="material-symbols-outlined">radio_button_unchecked</span>Unit 2: Acid-Base Equilibria — pH, Henderson-Hasselbalch equation, indicators, buffer mechanism &amp; capacity, salt hydrolysis</div>
+          <div class="topic-row topic-pending"><span class="material-symbols-outlined">radio_button_unchecked</span>Unit 3: Theories of Electrolytes — Debye-Hückel limiting law, activity coefficients, Debye-Hückel-Onsager equation</div>
+          <div class="topic-row topic-pending"><span class="material-symbols-outlined">radio_button_unchecked</span>Unit 4: Galvanic Cells — Electrode potentials, Nernst equation, electrode types, cell reactions, thermodynamic functions from e.m.f.</div>
+          <div class="topic-row topic-pending"><span class="material-symbols-outlined">radio_button_unchecked</span>Unit 5: Applications of Galvanic Cells — Potentiometric titration, ion selective electrodes, fuel cell, solar cells, photoelectrochemical H₂ generation</div>
+          <div class="topic-row topic-pending"><span class="material-symbols-outlined">radio_button_unchecked</span>Unit 6: Electrode Processes — Polarization (concentration, activation, ohmic), polarography &amp; voltammetry</div>
+          <div class="topic-row topic-pending"><span class="material-symbols-outlined">radio_button_unchecked</span>Unit 7: Industrial Applications — Chloro-alkali industries, electrometallurgy, electrochemical treatment of effluents</div>
+        </div>
+      </div>
+
+      <div class="syllabus-item">
+        <div class="syllabus-header">
+          <div class="syl-icon" style="background:#EEEDFE"><i class="fa-solid fa-atom" style="color:#7F77DD;font-size:17px"></i></div>
+          <div>
+            <div class="syl-title">Organic Chemistry II</div>
+            <div class="syl-sub" data-sylhref="syllabus-ch7221.html">CH 7221 · 7 Units</div>
+          </div>
+          <span class="syl-credit-tag">3 cr</span>
+          <span class="material-symbols-outlined syl-goto">arrow_forward</span>
+        </div>
+        <div class="syllabus-topics">
+          <div class="topic-row topic-pending"><span class="material-symbols-outlined">radio_button_unchecked</span>Unit 1: Nitro &amp; Nitroso Compounds — Synthesis, resonance, reactivity, reactions &amp; reduction</div>
+          <div class="topic-row topic-pending"><span class="material-symbols-outlined">radio_button_unchecked</span>Unit 2: Amino Compounds — Synthesis, properties, diazonium &amp; azo compounds, quaternary compounds, N-oxides, azides, enamines</div>
+          <div class="topic-row topic-pending"><span class="material-symbols-outlined">radio_button_unchecked</span>Unit 3: Other C–N Compounds — Nitriles, isonitriles, thiocyanates, carbamates, ureas, imines, oximes</div>
+          <div class="topic-row topic-pending"><span class="material-symbols-outlined">radio_button_unchecked</span>Unit 4: Organo-Sulphur &amp; Organo-Phosphorus Compounds — Thiols, sulphides, phosphines, sulphonic acids, optical activity</div>
+          <div class="topic-row topic-pending"><span class="material-symbols-outlined">radio_button_unchecked</span>Unit 5: Organometallic Compounds — Synthesis with Li, Mg, Cu, Cd, Zn; synthetic utility</div>
+          <div class="topic-row topic-pending"><span class="material-symbols-outlined">radio_button_unchecked</span>Unit 6: Heterocyclic Compounds — Pyridine, pyrrole, furan, thiophane, quinoline, isoquinoline; N–S and N–O systems</div>
+          <div class="topic-row topic-pending"><span class="material-symbols-outlined">radio_button_unchecked</span>Unit 7: Dyes — Theory of colour, classification, synthesis of methyl orange, Congo red, indigo, alizarin, etc.</div>
+        </div>
+      </div>
+
+      <div class="syllabus-item">
+        <div class="syllabus-header">
+          <div class="syl-icon" style="background:#FBEAF0"><i class="fa-solid fa-rotate" style="color:#D4537E;font-size:17px"></i></div>
+          <div>
+            <div class="syl-title">Stereochemistry</div>
+            <div class="syl-sub" data-sylhref="syllabus-ch7222.html">CH 7222 · 6 Units</div>
+          </div>
+          <span class="syl-credit-tag">3 cr</span>
+          <span class="material-symbols-outlined syl-goto">arrow_forward</span>
+        </div>
+        <div class="syllabus-topics">
+          <div class="topic-row topic-pending"><span class="material-symbols-outlined">radio_button_unchecked</span>Unit 1: Fundamentals — Stereoisomerism, Fischer, Newman &amp; Sawhorse projections</div>
+          <div class="topic-row topic-pending"><span class="material-symbols-outlined">radio_button_unchecked</span>Unit 2: Optical Activity &amp; Isomerism — Chirality, symmetry elements, enantiomers, diastereomers, meso &amp; racemic compounds, atropisomerism</div>
+          <div class="topic-row topic-pending"><span class="material-symbols-outlined">radio_button_unchecked</span>Unit 3: Geometrical Isomerism — cis-trans, syn-anti, E/Z system, polyenes, cyclic compounds, physical properties</div>
+          <div class="topic-row topic-pending"><span class="material-symbols-outlined">radio_button_unchecked</span>Unit 4: Conformation &amp; Conformational Analysis — Ethane, butane, cyclohexane, mono &amp; disubstituted cyclohexanes, 1,3-diaxial interaction</div>
+          <div class="topic-row topic-pending"><span class="material-symbols-outlined">radio_button_unchecked</span>Unit 5: Configuration — D/L, R/S absolute configurations, determination &amp; correlation</div>
+          <div class="topic-row topic-pending"><span class="material-symbols-outlined">radio_button_unchecked</span>Unit 6: Fused-Ring &amp; Bicyclic Systems — Stereochemistry of decalines, bridged systems, Bredt's rule</div>
+        </div>
+      </div>
+
+      <div class="syllabus-item">
+        <div class="syllabus-header">
+          <div class="syl-icon" style="background:#FAEEDA"><i class="fa-solid fa-table-cells" style="color:#EF9F27;font-size:17px"></i></div>
+          <div>
+            <div class="syl-title">Chemistry of the Representative Elements</div>
+            <div class="syl-sub" data-sylhref="syllabus-ch7241.html">CH 7241 · 9 Units</div>
+          </div>
+          <span class="syl-credit-tag">4 cr</span>
+          <span class="material-symbols-outlined syl-goto">arrow_forward</span>
+        </div>
+        <div class="syllabus-topics">
+          <div class="topic-row topic-pending"><span class="material-symbols-outlined">radio_button_unchecked</span>Unit 1: Hydrogen — Isotopes, heavy water, water gas, binary hydrides, hydrogen bond, ice structure, hydrogen as fuel</div>
+          <div class="topic-row topic-pending"><span class="material-symbols-outlined">radio_button_unchecked</span>Unit 2: Alkali Metals — Occurrence, extraction, properties, ammonia solutions, compounds, crown ethers</div>
+          <div class="topic-row topic-pending"><span class="material-symbols-outlined">radio_button_unchecked</span>Unit 3: Alkaline Earth Metals — Comparative properties, Be–Al diagonal relation, compounds, organometallic &amp; nuclear materials</div>
+          <div class="topic-row topic-pending"><span class="material-symbols-outlined">radio_button_unchecked</span>Unit 4: Boron Family — Borates, BX₃ Lewis acid, boron hydrides, polyhedral boranes, carboranes, aqueous chemistry Al–Tl</div>
+          <div class="topic-row topic-pending"><span class="material-symbols-outlined">radio_button_unchecked</span>Unit 5: Carbon &amp; Congeners — Allotropes, catenation, carbenes, carbides, silicates, aluminosilicates, inert pair effect</div>
+          <div class="topic-row topic-pending"><span class="material-symbols-outlined">radio_button_unchecked</span>Unit 6: Nitrogen Family — N₂ stability, nitrogen fixation, hydrazine, hydroxylamine, oxoacids of N &amp; P, allotropes of phosphorus</div>
+          <div class="topic-row topic-pending"><span class="material-symbols-outlined">radio_button_unchecked</span>Unit 7: Chalcogens — Oxygen isotopes, ozone &amp; CFCs, peroxidic compounds, hemoglobin, sulfur allotropes, oxoacids of S</div>
+          <div class="topic-row topic-pending"><span class="material-symbols-outlined">radio_button_unchecked</span>Unit 8: Halogens — MO diagrams, interhalogen compounds, polyhalides, oxoacids, production of F₂ &amp; Cl₂</div>
+          <div class="topic-row topic-pending"><span class="material-symbols-outlined">radio_button_unchecked</span>Unit 9: Inert Gases — Noble gas chemistry, xenon fluorides, oxides, oxyfluorides, krypton &amp; radon compounds, clathrates</div>
+        </div>
+      </div>
+
+      <!-- ── CHEMISTRY LAB ── -->
+      <div class="syl-dept-label"><i class="fa-solid fa-flask-vial"></i> Chemistry Lab</div>
+
+      <div class="syllabus-item">
+        <div class="syllabus-header">
+          <div class="syl-icon" style="background:#EAF3DE"><i class="fa-solid fa-microscope" style="color:#639922;font-size:17px"></i></div>
+          <div>
+            <div class="syl-title">Physical Chemistry Laboratory I</div>
+            <div class="syl-sub" data-sylhref="syllabus-chl202.html">CHL 202 · 7 Experiment Groups</div>
+          </div>
+          <span class="syl-credit-tag">2 cr</span>
+          <span class="material-symbols-outlined syl-goto">arrow_forward</span>
+        </div>
+        <div class="syllabus-topics">
+          <div class="topic-row topic-pending"><span class="material-symbols-outlined">radio_button_unchecked</span>Group 1: Molecular Weight Determination — Volatile liquids and non-volatile solids</div>
+          <div class="topic-row topic-pending"><span class="material-symbols-outlined">radio_button_unchecked</span>Group 2: Equilibrium Experiments — Partition coefficient, equilibrium constant, molecular association/dissociation, solubility vs temperature</div>
+          <div class="topic-row topic-pending"><span class="material-symbols-outlined">radio_button_unchecked</span>Group 3: Thermochemical Measurements — Heat of neutralization, Hess's law experiments</div>
+          <div class="topic-row topic-pending"><span class="material-symbols-outlined">radio_button_unchecked</span>Group 4: Electrochemical Measurements — Conductance cell constant, specific &amp; molar conductance, conductometric titration, e.m.f., pH-titration</div>
+          <div class="topic-row topic-pending"><span class="material-symbols-outlined">radio_button_unchecked</span>Group 5: Physical Properties — Viscosity, density, surface tension, vapour pressure</div>
+          <div class="topic-row topic-pending"><span class="material-symbols-outlined">radio_button_unchecked</span>Group 6: Colligative Properties — Depression of freezing point, elevation of boiling point</div>
+          <div class="topic-row topic-pending"><span class="material-symbols-outlined">radio_button_unchecked</span>Group 7: Kinetics — Clock reaction kinetics, effect of temperature on reaction rates</div>
+        </div>
+      </div>
+
+      <div class="syllabus-item">
+        <div class="syllabus-header">
+          <div class="syl-icon" style="background:#E1F5EE"><i class="fa-solid fa-vials" style="color:#1D9E75;font-size:17px"></i></div>
+          <div>
+            <div class="syl-title">Quantitative Inorganic Analysis</div>
+            <div class="syl-sub" data-sylhref="syllabus-chl242.html">CHL 242 · 5 Units</div>
+          </div>
+          <span class="syl-credit-tag">4 cr</span>
+          <span class="material-symbols-outlined syl-goto">arrow_forward</span>
+        </div>
+        <div class="syllabus-topics">
+          <div class="topic-row topic-pending"><span class="material-symbols-outlined">radio_button_unchecked</span>Unit 1: Data Collection &amp; Processing — Analytical balance, volumetric glassware, calibration, error analysis, significant figures, primary &amp; secondary standards</div>
+          <div class="topic-row topic-pending"><span class="material-symbols-outlined">radio_button_unchecked</span>Unit 2: Volumetric Analysis — Neutralization, oxidation-reduction (permanganate, dichromate), iodometric, precipitation (Volhard's), complexometric (EDTA) methods</div>
+          <div class="topic-row topic-pending"><span class="material-symbols-outlined">radio_button_unchecked</span>Unit 3: Gravimetric Analysis — Calcium as oxalate, aluminium, sulfate, phosphate, chromium, sodium, cobalt determinations</div>
+          <div class="topic-row topic-pending"><span class="material-symbols-outlined">radio_button_unchecked</span>Unit 4: Analysis of Mixtures — Separation &amp; quantitative determination of Cu/Ni, Fe/Mn, Cu/Zn, Fe/Ca, Cr/Ni binary mixtures</div>
+          <div class="topic-row topic-pending"><span class="material-symbols-outlined">radio_button_unchecked</span>Unit 5: Colorimetric Analysis — Iron determination with 1,10-phenanthroline</div>
+        </div>
+      </div>
+
+      <!-- ── PHYSICS ── -->
+      <div class="syl-dept-label"><i class="fa-solid fa-wave-square"></i> Physics</div>
+
+      <div class="syllabus-item">
+        <div class="syllabus-header">
+          <div class="syl-icon" style="background:#E6F1FB"><i class="fa-solid fa-eye" style="color:#378ADD;font-size:17px"></i></div>
+          <div>
+            <div class="syl-title">Optics</div>
+            <div class="syl-sub" data-sylhref="syllabus-pm7211.html">PM 7211 · 4 Units</div>
+          </div>
+          <span class="syl-credit-tag">2 cr</span>
+          <span class="material-symbols-outlined syl-goto">arrow_forward</span>
+        </div>
+        <div class="syllabus-topics">
+          <div class="topic-row topic-pending"><span class="material-symbols-outlined">radio_button_unchecked</span>Unit 1: Geometrical Optics — Spherical &amp; chromatic aberration, astigmatism, ray matrices, applications</div>
+          <div class="topic-row topic-pending"><span class="material-symbols-outlined">radio_button_unchecked</span>Unit 2: Coherence — First order coherence, spatial &amp; temporal coherence, higher order coherence</div>
+          <div class="topic-row topic-pending"><span class="material-symbols-outlined">radio_button_unchecked</span>Unit 3: Interference — Superposition principle, phase &amp; group velocity, Huygens principle, Young's experiment, biprism, Newton's rings, Michelson's interferometer</div>
+          <div class="topic-row topic-pending"><span class="material-symbols-outlined">radio_button_unchecked</span>Unit 4: Diffraction — Fraunhofer diffraction, single/double/multiple slits, diffraction grating, spectrometer, resolving power</div>
+        </div>
+      </div>
+
+      <div class="syllabus-item">
+        <div class="syllabus-header">
+          <div class="syl-icon" style="background:#FBEAF0"><i class="fa-solid fa-magnet" style="color:#D4537E;font-size:17px"></i></div>
+          <div>
+            <div class="syl-title">Electricity and Magnetism</div>
+            <div class="syl-sub" data-sylhref="syllabus-pm7223.html">PM 7223 · 5 Units</div>
+          </div>
+          <span class="syl-credit-tag">2 cr</span>
+          <span class="material-symbols-outlined syl-goto">arrow_forward</span>
+        </div>
+        <div class="syllabus-topics">
+          <div class="topic-row topic-pending"><span class="material-symbols-outlined">radio_button_unchecked</span>Unit 1: Varying Current — Transients, decay &amp; growth of current, LCR circuit</div>
+          <div class="topic-row topic-pending"><span class="material-symbols-outlined">radio_button_unchecked</span>Unit 2: Thermoelectricity — Seebeck, Peltier &amp; Thomson effects, thermocouple</div>
+          <div class="topic-row topic-pending"><span class="material-symbols-outlined">radio_button_unchecked</span>Unit 3: Magnetic Properties — Magnetization, B-H curve</div>
+          <div class="topic-row topic-pending"><span class="material-symbols-outlined">radio_button_unchecked</span>Unit 4: Alternating Current — Complex variable, LCR series &amp; parallel circuits, Q-factor, transformer</div>
+          <div class="topic-row topic-pending"><span class="material-symbols-outlined">radio_button_unchecked</span>Unit 5: Semiconductors &amp; Rectification — Energy bands, p-n junction, depletion layer, diode equation, half-wave &amp; full-wave rectification</div>
+        </div>
+      </div>
+
+      <div class="syllabus-item">
+        <div class="syllabus-header">
+          <div class="syl-icon" style="background:#EEEDFE"><i class="fa-solid fa-ruler-combined" style="color:#7F77DD;font-size:17px"></i></div>
+          <div>
+            <div class="syl-title">Physics Non-Major Practical</div>
+            <div class="syl-sub" data-sylhref="syllabus-pml204.html">PML 204 · 10 Experiments</div>
+          </div>
+          <span class="syl-credit-tag">2 cr</span>
+          <span class="material-symbols-outlined syl-goto">arrow_forward</span>
+        </div>
+        <div class="syllabus-topics">
+          <div class="topic-row topic-pending"><span class="material-symbols-outlined">radio_button_unchecked</span>Exp. 1–2: Post office box — Unknown resistance &amp; verification of laws of combination</div>
+          <div class="topic-row topic-pending"><span class="material-symbols-outlined">radio_button_unchecked</span>Exp. 3–4: Galvanometer resistance — Half-deflection method &amp; Kelvin's method</div>
+          <div class="topic-row topic-pending"><span class="material-symbols-outlined">radio_button_unchecked</span>Exp. 5–6: Low &amp; high resistance — Fall of potential method &amp; deflection method</div>
+          <div class="topic-row topic-pending"><span class="material-symbols-outlined">radio_button_unchecked</span>Exp. 7: Comparison of e.m.f. of two cells</div>
+          <div class="topic-row topic-pending"><span class="material-symbols-outlined">radio_button_unchecked</span>Exp. 8: Spectrometer — Angle of prism &amp; refractive index by minimum deviation</div>
+          <div class="topic-row topic-pending"><span class="material-symbols-outlined">radio_button_unchecked</span>Exp. 9–10: Wavelength of sodium light — Newton's rings &amp; biprism</div>
+          <div class="topic-row topic-pending"><span class="material-symbols-outlined">radio_button_unchecked</span>Exp. 11: Wavelength of light using plane diffraction grating</div>
+        </div>
+      </div>
+
+      <!-- ── MATHEMATICS ── -->
+      <div class="syl-dept-label"><i class="fa-solid fa-square-root-variable"></i> Mathematics</div>
+
+      <div class="syllabus-item">
+        <div class="syllabus-header">
+          <div class="syl-icon" style="background:#FAEEDA"><i class="fa-solid fa-infinity" style="color:#EF9F27;font-size:17px"></i></div>
+          <div>
+            <div class="syl-title">Calculus II</div>
+            <div class="syl-sub" data-sylhref="syllabus-mam202a.html">MAM 202A · 2 Parts · 6 Units</div>
+          </div>
+          <span class="syl-credit-tag">2 cr</span>
+          <span class="material-symbols-outlined syl-goto">arrow_forward</span>
+        </div>
+        <div class="syllabus-topics">
+          <div class="topic-row topic-pending"><span class="material-symbols-outlined">radio_button_unchecked</span>Part A – Unit 1: Vector-valued Functions — Limits, derivatives, integrals, tangent lines, curvature of plane &amp; space curves</div>
+          <div class="topic-row topic-pending"><span class="material-symbols-outlined">radio_button_unchecked</span>Part A – Unit 2: Partial Differentiation — Functions of several variables, partial derivatives, chain rule, directional derivatives, gradient, tangent planes</div>
+          <div class="topic-row topic-pending"><span class="material-symbols-outlined">radio_button_unchecked</span>Part A – Unit 3: Taylor's Formula &amp; Extrema — Taylor's formula (one &amp; several variables), Lagrange multiplier</div>
+          <div class="topic-row topic-pending"><span class="material-symbols-outlined">radio_button_unchecked</span>Part B – Unit 1: Multiple Integrals — Double &amp; triple integrals, polar, cylindrical &amp; spherical coordinates</div>
+          <div class="topic-row topic-pending"><span class="material-symbols-outlined">radio_button_unchecked</span>Part B – Unit 2: Change of Variables — General multiple integrals, Jacobians</div>
+          <div class="topic-row topic-pending"><span class="material-symbols-outlined">radio_button_unchecked</span>Part B – Unit 3: Vector Calculus — Gradient, divergence, curl; Green's, Gauss's &amp; Stoke's theorems</div>
+        </div>
+      </div>
+
+      <div class="syllabus-item">
+        <div class="syllabus-header">
+          <div class="syl-icon" style="background:#EAF3DE"><i class="fa-solid fa-chart-line" style="color:#639922;font-size:17px"></i></div>
+          <div>
+            <div class="syl-title">Ordinary Differential Equations</div>
+            <div class="syl-sub" data-sylhref="syllabus-mam203a.html">MAM 203A · 5 Units</div>
+          </div>
+          <span class="syl-credit-tag">2 cr</span>
+          <span class="material-symbols-outlined syl-goto">arrow_forward</span>
+        </div>
+        <div class="syllabus-topics">
+          <div class="topic-row topic-pending"><span class="material-symbols-outlined">radio_button_unchecked</span>Unit 1: ODE Basics — Initial &amp; boundary value problems, existence &amp; uniqueness theorems</div>
+          <div class="topic-row topic-pending"><span class="material-symbols-outlined">radio_button_unchecked</span>Unit 2: First Order Equations — Separable, linear, exact equations, special integrating factors, substitutions</div>
+          <div class="topic-row topic-pending"><span class="material-symbols-outlined">radio_button_unchecked</span>Unit 3: Higher Order Linear DEs — Solution space, fundamental solutions, reduction of order, constant coefficients</div>
+          <div class="topic-row topic-pending"><span class="material-symbols-outlined">radio_button_unchecked</span>Unit 4: Methods — Undetermined coefficients, variation of parameters, Euler-Cauchy equations</div>
+          <div class="topic-row topic-pending"><span class="material-symbols-outlined">radio_button_unchecked</span>Unit 5: Systems of DEs — Linear systems, fundamental matrix, solutions with constant coefficients</div>
+        </div>
+      </div>
+
+      <div class="syllabus-item">
+        <div class="syllabus-header">
+          <div class="syl-icon" style="background:#E1F5EE"><i class="fa-solid fa-calculator" style="color:#1D9E75;font-size:17px"></i></div>
+          <div>
+            <div class="syl-title">Numerical Analysis</div>
+            <div class="syl-sub" data-sylhref="syllabus-mam204a.html">MAM 204A · 4 Units</div>
+          </div>
+          <span class="syl-credit-tag">2 cr</span>
+          <span class="material-symbols-outlined syl-goto">arrow_forward</span>
+        </div>
+        <div class="syllabus-topics">
+          <div class="topic-row topic-pending"><span class="material-symbols-outlined">radio_button_unchecked</span>Unit 1: Solution of Equations — Bisection, false position, fixed-point iteration, Newton-Raphson, error analysis, convergence acceleration</div>
+          <div class="topic-row topic-pending"><span class="material-symbols-outlined">radio_button_unchecked</span>Unit 2: Interpolation &amp; Polynomial Approximation — Taylor polynomials, Lagrange interpolation, iterated interpolation, extrapolation</div>
+          <div class="topic-row topic-pending"><span class="material-symbols-outlined">radio_button_unchecked</span>Unit 3: Differentiation &amp; Integration — Numerical differentiation, Richardson's extrapolation, Romberg's integration, Gaussian quadrature</div>
+          <div class="topic-row topic-pending"><span class="material-symbols-outlined">radio_button_unchecked</span>Unit 4: Linear Systems — Gaussian elimination, pivoting, matrix inversion, LU decomposition</div>
+        </div>
+      </div>
+
+      <div class="syllabus-item">
+        <div class="syllabus-header">
+          <div class="syl-icon" style="background:#E6F1FB"><i class="fa-solid fa-function" style="color:#378ADD;font-size:17px"></i></div>
+          <div>
+            <div class="syl-title">Mathematical Methods</div>
+            <div class="syl-sub" data-sylhref="syllabus-mtm205.html">MTM 205 · 5 Units</div>
+          </div>
+          <span class="syl-credit-tag">2 cr</span>
+          <span class="material-symbols-outlined syl-goto">arrow_forward</span>
+        </div>
+        <div class="syllabus-topics">
+          <div class="topic-row topic-pending"><span class="material-symbols-outlined">radio_button_unchecked</span>Unit 1: Fourier Series — Fourier sine &amp; cosine series, properties, operations, complex form</div>
+          <div class="topic-row topic-pending"><span class="material-symbols-outlined">radio_button_unchecked</span>Unit 2: Infinite Series Solutions — Legendre, Bessel, Hermite &amp; Laguerre equations; special functions &amp; recurrence relations</div>
+          <div class="topic-row topic-pending"><span class="material-symbols-outlined">radio_button_unchecked</span>Unit 3: Beta &amp; Gamma Functions</div>
+          <div class="topic-row topic-pending"><span class="material-symbols-outlined">radio_button_unchecked</span>Unit 4: Laplace Transforms — Basic properties, periodic functions, convolutions, inverse transform, IVP solutions</div>
+          <div class="topic-row topic-pending"><span class="material-symbols-outlined">radio_button_unchecked</span>Unit 5: Complex Variables — Analytic functions, Cauchy's theorem &amp; integral formula, singularities, residues, contour integration</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ── PROGRESS ── -->
+  <div class="page" id="page-progress">
+    <div class="page-header">
+      <h1>Progress</h1>
+      <p>সিলেবাস চেকবক্স থেকে রিয়েল-টাইম অগ্রগতি • সব কোর্সের গড় হিসাবে</p>
+    </div>
+
+    <!-- Hero banner with donut -->
+    <div class="progress-hero">
+      <div class="prog-donut-wrap">
+        <svg width="140" height="140" viewBox="0 0 140 140">
+          <circle cx="70" cy="70" r="52" fill="none" stroke="rgba(255,255,255,0.18)" stroke-width="13"/>
+          <circle id="prog-donut-arc" cx="70" cy="70" r="52" fill="none" stroke="#fff" stroke-width="13"
+            stroke-dasharray="0 327" stroke-dashoffset="-82" stroke-linecap="round"
+            style="transform-origin:50% 50%;transform:rotate(-90deg)"/>
+        </svg>
+        <div class="prog-donut-inner">
+          <div class="prog-donut-pct" id="prog-overall-pct">0%</div>
+          <div class="prog-donut-sub">সামগ্রিক</div>
+        </div>
+      </div>
+      <div class="prog-hero-info">
+        <div class="prog-hero-title">সামগ্রিক অগ্রগতি</div>
+        <div class="prog-hero-label" id="prog-overall-label">লোড হচ্ছে...</div>
+        <div class="prog-stats-row">
+          <div class="prog-stat-chip">
+            <div class="prog-chip-val" id="prog-chip-courses">14</div>
+            <div class="prog-chip-lbl">কোর্স</div>
+          </div>
+          <div class="prog-stat-chip">
+            <div class="prog-chip-val" id="prog-chip-done">0</div>
+            <div class="prog-chip-lbl">সম্পন্ন</div>
+          </div>
+          <div class="prog-stat-chip">
+            <div class="prog-chip-val" id="prog-chip-left">—</div>
+            <div class="prog-chip-lbl">বাকি</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Per-course progress -->
+    <div class="progress-courses-card">
+      <div class="pc-card-title">
+        <span class="material-symbols-outlined">bar_chart</span> কোর্সভিত্তিক অগ্রগতি
+      </div>
+      <div class="subj-list" id="prog-course-list">
+        <!-- filled by JS -->
+      </div>
+    </div>
+
+    <!-- Weekly reading time -->
+    <div class="progress-week-card">
+      <div class="pw-title">
+        <span class="material-symbols-outlined">calendar_month</span> সাপ্তাহিক পড়ার সময় (ঘন্টা)
+      </div>
+      <div class="progress-week">
+        <div class="week-day"><div class="day-name">শনি</div><div class="week-bar-wrap"><div class="week-bar" style="height:60%"></div></div><div class="day-h">2.4h</div></div>
+        <div class="week-day"><div class="day-name">রবি</div><div class="week-bar-wrap"><div class="week-bar" style="height:80%"></div></div><div class="day-h">3.2h</div></div>
+        <div class="week-day"><div class="day-name">সোম</div><div class="week-bar-wrap"><div class="week-bar" style="height:50%"></div></div><div class="day-h">2.0h</div></div>
+        <div class="week-day"><div class="day-name">মঙ্গ</div><div class="week-bar-wrap"><div class="week-bar" style="height:100%"></div></div><div class="day-h">4.0h</div></div>
+        <div class="week-day"><div class="day-name">বুধ</div><div class="week-bar-wrap"><div class="week-bar" style="height:70%"></div></div><div class="day-h">2.8h</div></div>
+        <div class="week-day"><div class="day-name">বৃহ</div><div class="week-bar-wrap"><div class="week-bar" style="height:40%"></div></div><div class="day-h">1.6h</div></div>
+        <div class="week-day"><div class="day-name">শুক্র</div><div class="week-bar-wrap"><div class="week-bar" style="height:55%"></div></div><div class="day-h">2.2h</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── MY GOAL ── -->
+  <div class="page" id="page-mygoal">
+    <div class="page-header">
+      <h1>My Goal</h1>
+      <p>আপনার নির্ধারিত লক্ষ্যসমূহ</p>
+    </div>
+    <div class="goals-grid">
+      <div class="goal-card">
+        <div class="goal-top">
+          <div class="goal-icon" style="background:var(--green-light)">
+            <span class="material-symbols-outlined" style="color:var(--green)">medication</span>
+          </div>
+          <div class="goal-info">
+            <div class="goal-title">Pharmacology সম্পন্ন করা</div>
+            <div class="goal-deadline">শেষ তারিখ: ৩০ মে ২০২৬</div>
+          </div>
+          <span class="goal-status status-on">ট্র্যাকে</span>
+        </div>
+        <div class="goal-prog-row">
+          <div class="goal-bar"><div class="goal-fill" style="width:68%;background:#1D9E75"></div></div>
+          <span class="goal-pct">68%</span>
+        </div>
+      </div>
+      <div class="goal-card">
+        <div class="goal-top">
+          <div class="goal-icon" style="background:var(--blue-light)">
+            <span class="material-symbols-outlined" style="color:var(--blue)">biotech</span>
+          </div>
+          <div class="goal-info">
+            <div class="goal-title">Biochemistry মিড প্রস্তুতি</div>
+            <div class="goal-deadline">শেষ তারিখ: ২ জুন ২০২৬</div>
+          </div>
+          <span class="goal-status status-late">পিছিয়ে</span>
+        </div>
+        <div class="goal-prog-row">
+          <div class="goal-bar"><div class="goal-fill" style="width:45%;background:#378ADD"></div></div>
+          <span class="goal-pct">45%</span>
+        </div>
+      </div>
+      <div class="goal-card">
+        <div class="goal-top">
+          <div class="goal-icon" style="background:var(--purple-light)">
+            <span class="material-symbols-outlined" style="color:var(--purple)">auto_stories</span>
+          </div>
+          <div class="goal-info">
+            <div class="goal-title">প্রতিদিন ২ ঘণ্টা পড়া</div>
+            <div class="goal-deadline">চলমান · সাপ্তাহিক লক্ষ্য</div>
+          </div>
+          <span class="goal-status status-on">ট্র্যাকে</span>
+        </div>
+        <div class="goal-prog-row">
+          <div class="goal-bar"><div class="goal-fill" style="width:85%;background:#7F77DD"></div></div>
+          <span class="goal-pct">85%</span>
+        </div>
+      </div>
+      <div class="goal-card">
+        <div class="goal-top">
+          <div class="goal-icon" style="background:var(--amber-light)">
+            <span class="material-symbols-outlined" style="color:var(--amber)">military_tech</span>
+          </div>
+          <div class="goal-info">
+            <div class="goal-title">Final Exam GPA 3.8+</div>
+            <div class="goal-deadline">শেষ তারিখ: জুলাই ২০২৬</div>
+          </div>
+          <span class="goal-status status-on">ট্র্যাকে</span>
+        </div>
+        <div class="goal-prog-row">
+          <div class="goal-bar"><div class="goal-fill" style="width:60%;background:#EF9F27"></div></div>
+          <span class="goal-pct">60%</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</main>
+
+<!-- ══════ BOTTOM NAV (mobile) ══════ -->
+<nav class="bottom-nav">
+  <div class="bottom-nav-inner">
+    <div class="bnav-item active" data-page="dashboard">
+      <span class="material-symbols-outlined">dashboard</span>
+      <span>Home</span>
+    </div>
+    <div class="bnav-item" data-page="courses">
+      <span class="material-symbols-outlined">library_books</span>
+      <span>Courses</span>
+    </div>
+    <div class="bnav-item" data-page="syllabus">
+      <span class="material-symbols-outlined">format_list_bulleted</span>
+      <span>Syllabus</span>
+    </div>
+    <div class="bnav-item" data-page="progress">
+      <span class="material-symbols-outlined">trending_up</span>
+      <span>Progress</span>
+    </div>
+    <div class="bnav-item" data-page="mygoal">
+      <span class="material-symbols-outlined">target</span>
+      <span>Goals</span>
+    </div>
+  </div>
+</nav>
+
+<script>
+  /* ── page navigation ── */
+  function navigate(page) {
+    document.querySelectorAll('.nav-item, .bnav-item').forEach(n => {
+      n.classList.toggle('active', n.dataset.page === page);
+    });
+    document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+    document.getElementById('page-' + page).classList.add('active');
+    closeSearch();
+    if (page === 'progress') refreshProgress();
+    if (page === 'dashboard') refreshDashboard();
+  }
+  document.querySelectorAll('.nav-item').forEach(i => i.addEventListener('click', () => { navigate(i.dataset.page); closeSidebar(); }));
+  document.querySelectorAll('.bnav-item').forEach(i => i.addEventListener('click', () => navigate(i.dataset.page)));
+
+  /* ── sidebar mobile ── */
+  const sidebar = document.getElementById('sidebar');
+  const overlay = document.getElementById('overlay');
+  function openSidebar()  { sidebar.classList.add('open'); overlay.classList.add('show'); }
+  function closeSidebar() { sidebar.classList.remove('open'); overlay.classList.remove('show'); }
+  document.getElementById('menu-btn').addEventListener('click', openSidebar);
+  overlay.addEventListener('click', closeSidebar);
+
+  /* ── dark mode ── */
+  const html = document.documentElement;
+  const darkIcon = document.getElementById('dark-icon');
+  const mobileDarkIcon = document.getElementById('mobile-dark-icon');
+  function setTheme(dark) {
+    html.setAttribute('data-theme', dark ? 'dark' : 'light');
+    const icon = dark ? 'light_mode' : 'dark_mode';
+    if (darkIcon) darkIcon.textContent = icon;
+    if (mobileDarkIcon) mobileDarkIcon.textContent = icon;
+    localStorage.setItem('theme', dark ? 'dark' : 'light');
+  }
+  const saved = localStorage.getItem('theme');
+  const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+  setTheme(saved ? saved === 'dark' : prefersDark);
+  document.getElementById('dark-toggle').addEventListener('click', () => setTheme(html.getAttribute('data-theme') !== 'dark'));
+  document.getElementById('mobile-dark-btn').addEventListener('click', () => setTheme(html.getAttribute('data-theme') !== 'dark'));
+
+  /* ── course row selection ── */
+  const panel    = document.getElementById('course-detail-panel');
+  const cdpTitle = document.getElementById('cdp-title');
+  const cdpCode  = document.getElementById('cdp-code');
+  const cdpIcon  = document.getElementById('cdp-icon');
+  document.querySelectorAll('.course-row').forEach(row => {
+    row.addEventListener('click', () => {
+      if (row.dataset.href) { window.location.href = row.dataset.href; return; }
+      const wasSelected = row.classList.contains('selected');
+      document.querySelectorAll('.course-row').forEach(r => r.classList.remove('selected'));
+      if (wasSelected) { panel.classList.remove('show'); return; }
+      row.classList.add('selected');
+      const { code, name, credits, icon, color, icolor } = row.dataset;
+      cdpTitle.textContent = name;
+      cdpCode.textContent  = code + '  ·  ' + credits + ' Credits';
+      cdpIcon.style.background = color;
+      cdpIcon.innerHTML = `<i class="${icon}" style="color:${icolor};font-size:20px"></i>`;
+      panel.classList.add('show');
+      setTimeout(() => panel.scrollIntoView({ behavior: 'smooth', block: 'nearest' }), 50);
+    });
+  });
+  document.getElementById('cdp-close').addEventListener('click', () => {
+    panel.classList.remove('show');
+    document.querySelectorAll('.course-row').forEach(r => r.classList.remove('selected'));
+  });
+
+  document.querySelectorAll('.syllabus-header').forEach(h => {
+    h.addEventListener('click', () => {
+      const sub = h.querySelector('[data-sylhref]');
+      if (sub) { window.location.href = sub.dataset.sylhref; }
+      else { h.closest('.syllabus-item').classList.toggle('open'); }
+    });
+  });
+
+  /* ══════════════════════════════════════
+     PROGRESS SYSTEM — reads localStorage written by syllabus pages
+  ══════════════════════════════════════ */
+  const COURSES_META = [
+    { id:'ch7201',  name:'Chemical Thermo.',   color:'#1D9E75' },
+    { id:'ch7202',  name:'Electrochemistry',   color:'#378ADD' },
+    { id:'ch7221',  name:'Organic Chem. II',   color:'#7F77DD' },
+    { id:'ch7222',  name:'Stereochemistry',    color:'#D4537E' },
+    { id:'ch7241',  name:'Rep. Elements',      color:'#EF9F27' },
+    { id:'chl202',  name:'Phys. Chem. Lab',    color:'#639922' },
+    { id:'chl242',  name:'Quant. Inorg. Anal.',color:'#1D9E75' },
+    { id:'pm7211',  name:'Optics',             color:'#378ADD' },
+    { id:'pm7223',  name:'Electricity & Mag.', color:'#D4537E' },
+    { id:'pml204',  name:'Physics Practical',  color:'#7F77DD' },
+    { id:'mam202a', name:'Calculus II',        color:'#EF9F27' },
+    { id:'mam203a', name:'ODEs',               color:'#639922' },
+    { id:'mam204a', name:'Numerical Analysis', color:'#1D9E75' },
+    { id:'mtm205',  name:'Mathematical Methods',color:'#378ADD'},
+  ];
+
+  function getCourseStats(id) {
+    const total = parseInt(localStorage.getItem('prog_'+id+'_total')||'0');
+    const done  = parseInt(localStorage.getItem('prog_'+id+'_done')||'0');
+    return { total, done };
+  }
+
+  function refreshProgress() {
+    let totalPctSum = 0, grandTotal = 0, grandDone = 0;
+    const listEl = document.getElementById('prog-course-list');
+    listEl.innerHTML = '';
+    COURSES_META.forEach((c, i) => {
+      const { total, done } = getCourseStats(c.id);
+      grandTotal += total;
+      grandDone  += done;
+      const pct = total ? Math.round(done/total*100) : 0;
+      totalPctSum += pct;
+      const delay = i * 60;
+      listEl.innerHTML += `
+        <div class="subj-row" style="animation-delay:${delay}ms">
+          <div class="subj-dot" style="background:${c.color};animation-delay:${delay}ms"></div>
+          <span class="subj-name">${c.name}</span>
+          <div class="subj-bar-wrap">
+            <div class="subj-bar">
+              <div class="subj-fill" style="width:${pct}%;background:${c.color};animation-delay:${delay}ms"></div>
+            </div>
+          </div>
+          <span class="subj-pct">${pct}%</span>
+        </div>`;
+    });
+    // Overall = average of all 14 course percentages
+    const overallPct = Math.round(totalPctSum / COURSES_META.length);
+    document.getElementById('prog-overall-pct').textContent = overallPct+'%';
+    document.getElementById('prog-overall-label').textContent = grandDone+' / '+grandTotal+' topic সম্পন্ন';
+    const chipDone = document.getElementById('prog-chip-done');
+    const chipLeft = document.getElementById('prog-chip-left');
+    if(chipDone) chipDone.textContent = grandDone;
+    if(chipLeft) chipLeft.textContent = grandTotal - grandDone;
+    const circ = 2*Math.PI*52; // ~327
+    const arc = (overallPct/100)*circ;
+    document.getElementById('prog-donut-arc').setAttribute('stroke-dasharray', arc+' '+circ);
+  }
+
+  function refreshDashboard() {
+    let totalPctSum = 0, grandTotal = 0, grandDone = 0;
+    COURSES_META.forEach(c => {
+      const { total, done } = getCourseStats(c.id);
+      grandTotal += total; grandDone += done;
+      const pct = total ? Math.round(done/total*100) : 0;
+      totalPctSum += pct;
+    });
+    // Average of all course percentages
+    const pct = Math.round(totalPctSum / COURSES_META.length);
+    const el = document.getElementById('dash-overall-pct');
+    const sub = document.getElementById('dash-overall-sub');
+    if(el) el.textContent = pct+'%';
+    if(sub) sub.textContent = grandDone+'/'+grandTotal+' topic';
+  }
+
+  // init on load
+  refreshDashboard();
+
+  /* ── search ── */
+  const searchData = [
+    { label: 'Dashboard',                    page: 'dashboard', icon: 'dashboard',            tags: 'dashboard home স্বাগতম stat' },
+    { label: 'Courses',                      page: 'courses',   icon: 'library_books',         tags: 'courses কোর্স list' },
+    { label: 'Chemical Thermodynamics',      page: 'syllabus',  icon: 'local_fire_department',  tags: 'ch7201 thermodynamics chemical entropy gibbs' },
+    { label: 'Electrochemistry',             page: 'syllabus',  icon: 'bolt',                  tags: 'ch7202 electrochemistry conductance galvanic nernst' },
+    { label: 'Organic Chemistry II',         page: 'syllabus',  icon: 'science',               tags: 'ch7221 organic amino nitro dyes heterocyclic' },
+    { label: 'Stereochemistry',              page: 'syllabus',  icon: 'rotate_right',          tags: 'ch7222 stereochemistry optical isomerism conformation' },
+    { label: 'Representative Elements',      page: 'syllabus',  icon: 'table_chart',           tags: 'ch7241 inorganic halogen nitrogen carbon alkali' },
+    { label: 'Physical Chemistry Lab',       page: 'syllabus',  icon: 'biotech',               tags: 'chl202 lab physical chemistry kinetics equilibrium' },
+    { label: 'Quantitative Inorganic Analysis',page:'syllabus', icon: 'science',               tags: 'chl242 quantitative inorganic volumetric gravimetric' },
+    { label: 'Optics',                       page: 'syllabus',  icon: 'visibility',            tags: 'pm7211 optics diffraction interference coherence' },
+    { label: 'Electricity and Magnetism',    page: 'syllabus',  icon: 'electric_bolt',         tags: 'pm7223 electricity magnetism semiconductor LCR' },
+    { label: 'Physics Practical',            page: 'syllabus',  icon: 'lab_profile',           tags: 'pml204 physics practical lab wavelength resistance' },
+    { label: 'Calculus II',                  page: 'syllabus',  icon: 'functions',             tags: 'mam202a calculus vector partial differential multiple integral' },
+    { label: 'Ordinary Differential Equations',page:'syllabus', icon: 'trending_up',           tags: 'mam203a ode differential equations first order' },
+    { label: 'Numerical Analysis',           page: 'syllabus',  icon: 'calculate',             tags: 'mam204a numerical bisection interpolation gaussian' },
+    { label: 'Mathematical Methods',         page: 'syllabus',  icon: 'functions',             tags: 'mtm205 fourier laplace bessel complex variable' },
+    { label: 'Progress',                     page: 'progress',  icon: 'trending_up',           tags: 'progress অগ্রগতি chart bar tracker' },
+    { label: 'My Goal',                      page: 'mygoal',    icon: 'target',                tags: 'goal লক্ষ্য gpa exam deadline' },
+    { label: 'আসন্ন পরীক্ষা',               page: 'dashboard', icon: 'event',                 tags: 'exam পরীক্ষা mid viva final' },
+    { label: 'Fourier Series',               page: 'syllabus',  icon: 'functions',             tags: 'fourier series sine cosine fourier mtm205' },
+    { label: 'Laplace Transform',            page: 'syllabus',  icon: 'functions',             tags: 'laplace transform inverse periodic mtm205' },
+    { label: 'Phase Equilibrium',            page: 'syllabus',  icon: 'local_fire_department', tags: 'phase equilibrium clapeyron colligative ch7201' },
+    { label: 'Galvanic Cells',               page: 'syllabus',  icon: 'bolt',                  tags: 'galvanic cell nernst electrode ch7202' },
+    { label: 'Diffraction',                  page: 'syllabus',  icon: 'visibility',            tags: 'diffraction grating slit spectrometer pm7211' },
+    { label: 'Conformational Analysis',      page: 'syllabus',  icon: 'rotate_right',          tags: 'conformation cyclohexane ethane ch7222' },
+  ];
+
+  const resultsEl = document.getElementById('search-results');
+
+  function doSearch(q) {
+    q = q.trim().toLowerCase();
+    if (!q) { closeSearch(); return; }
+    const hits = searchData.filter(d => (d.label + ' ' + d.tags).toLowerCase().includes(q));
+    if (hits.length === 0) {
+      resultsEl.innerHTML = '<div class="no-results">কিছু পাওয়া যায়নি</div>';
+    } else {
+      resultsEl.innerHTML = hits.slice(0, 8).map(h => `
+        <div class="search-result-item" onclick="navigate('${h.page}');clearSearch()">
+          <span class="material-symbols-outlined">${h.icon}</span>
+          ${h.label}
+          <span class="result-section">${h.page}</span>
+        </div>`).join('');
+    }
+    resultsEl.classList.add('show');
+  }
+
+  function closeSearch() { resultsEl.classList.remove('show'); }
+  function clearSearch() {
+    document.getElementById('top-search-input').value = '';
+    document.getElementById('sidebar-search-input').value = '';
+    closeSearch();
+  }
+
+  document.getElementById('top-search-input').addEventListener('input', e => doSearch(e.target.value));
+  document.getElementById('sidebar-search-input').addEventListener('input', e => doSearch(e.target.value));
+  document.addEventListener('click', e => {
+    if (!e.target.closest('.top-search') && !e.target.closest('.search-results') && !e.target.closest('.sidebar-search'))
+      closeSearch();
+  });
+
+  document.getElementById('mobile-search-btn').addEventListener('click', () => {
+    openSidebar();
+    setTimeout(() => document.getElementById('sidebar-search-input').focus(), 200);
+  });
+</script>
+</body>
+</html>

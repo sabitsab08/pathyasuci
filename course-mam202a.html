@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>MAM 202A — Calculus II</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300;400;500;600&family=Plus+Jakarta+Sans:wght@400;500;600&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
+  <style>
+    :root {
+      --accent:#EF9F27; --accent-light:#FAEEDA; --accent-mid:#854F0B;
+      --bg:#F7F6F2; --surface:#FFFFFF; --surface2:#F2F1ED;
+      --border:rgba(0,0,0,0.08); --border-md:rgba(0,0,0,0.13);
+      --text:#1A1A18; --text-2:#5A5A56; --text-3:#9A9A96;
+      --radius:10px; --radius-lg:14px; --tr:0.18s ease;
+    }
+    [data-theme="dark"] {
+      --bg:#0d0d0d; --surface:#1a1a1a; --surface2:#242424;
+      --border:rgba(255,255,255,0.08); --border-md:rgba(255,255,255,0.14);
+      --text:#ececec; --text-2:#a8a8a0; --text-3:#5c5c58;
+      --accent-light:rgba(239,159,39,0.15); --accent-mid:#f0b84a;
+    }
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+    html,body{min-height:100%;}
+    body{font-family:'Plus Jakarta Sans','Hind Siliguri',sans-serif;background:var(--bg);color:var(--text);transition:background var(--tr),color var(--tr);}
+    .material-symbols-outlined{font-variation-settings:'FILL' 0,'wght' 300,'GRAD' 0,'opsz' 24;font-size:20px;line-height:1;vertical-align:middle;flex-shrink:0;}
+    .topbar{position:sticky;top:0;z-index:100;background:var(--surface);border-bottom:1px solid var(--border);display:flex;align-items:center;gap:12px;padding:0 24px;height:54px;}
+    .back-btn{display:flex;align-items:center;gap:7px;font-size:13px;font-weight:600;color:var(--text-2);cursor:pointer;padding:6px 10px;border-radius:var(--radius);border:1px solid var(--border-md);background:var(--surface2);transition:background var(--tr),color var(--tr);text-decoration:none;}
+    .back-btn:hover{background:var(--border-md);color:var(--text);}
+    .topbar-title{font-size:14px;font-weight:600;color:var(--text-3);flex:1;overflow:hidden;white-space:nowrap;text-overflow:ellipsis;}
+    .topbar-title span{color:var(--text);}
+    .icon-btn{width:34px;height:34px;display:flex;align-items:center;justify-content:center;border-radius:var(--radius);cursor:pointer;border:1px solid var(--border-md);background:var(--surface2);color:var(--text-2);transition:background var(--tr);}
+    .icon-btn:hover{background:var(--border-md);}
+    .hero{background:linear-gradient(135deg,#EF9F27 0%,#b07010 100%);padding:36px 32px 32px;color:#fff;}
+    .hero-top{display:flex;align-items:flex-start;gap:18px;}
+    .hero-icon{width:56px;height:56px;border-radius:14px;background:rgba(255,255,255,0.18);display:flex;align-items:center;justify-content:center;font-size:26px;flex-shrink:0;}
+    .hero-code{font-size:12px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;opacity:0.75;margin-bottom:5px;}
+    .hero-name{font-size:22px;font-weight:600;line-height:1.25;margin-bottom:10px;}
+    .hero-tags{display:flex;flex-wrap:wrap;gap:8px;}
+    .hero-tag{font-size:11px;font-weight:600;background:rgba(255,255,255,0.18);border-radius:6px;padding:4px 10px;display:flex;align-items:center;gap:5px;}
+    .page-body{max-width:900px;margin:0 auto;padding:28px 24px 60px;display:flex;flex-direction:column;gap:20px;}
+    .sec-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);overflow:hidden;transition:background var(--tr),border-color var(--tr);}
+    .sec-head{display:flex;align-items:center;gap:12px;padding:14px 18px;border-bottom:1px solid var(--border);}
+    .sec-icon{width:32px;height:32px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:15px;flex-shrink:0;}
+    .sec-title{font-size:14px;font-weight:700;color:var(--text);}
+    .sec-body{padding:16px 18px;}
+    .book-list{display:flex;flex-direction:column;gap:8px;}
+    .book-item{display:flex;align-items:flex-start;gap:12px;padding:10px 12px;border:1px solid var(--border);border-radius:var(--radius);background:var(--surface2);font-size:13px;color:var(--text-2);line-height:1.5;transition:border-color var(--tr),background var(--tr);}
+    .book-item:hover{border-color:var(--border-md);}
+    .book-item i{font-size:14px;color:var(--accent);margin-top:2px;flex-shrink:0;}
+    @media(max-width:680px){.hero{padding:24px 18px 22px;}.hero-name{font-size:18px;}.page-body{padding:18px 14px 60px;}.topbar{padding:0 14px;}}
+  </style>
+</head>
+<body>
+<header class="topbar">
+  <a class="back-btn" href="pathyasuci.html"><i class="fa-solid fa-arrow-left"></i> Back</a>
+  <div class="topbar-title">Courses / <span>MAM 202A</span></div>
+  <div class="icon-btn" id="dark-toggle"><span class="material-symbols-outlined" id="dark-icon">dark_mode</span></div>
+</header>
+<div class="hero">
+  <div class="hero-top">
+    <div class="hero-icon"><i class="fa-solid fa-infinity"></i></div>
+    <div>
+      <div class="hero-code">MAM 202A &nbsp;·&nbsp; Mathematics</div>
+      <div class="hero-name">Calculus II</div>
+      <div class="hero-tags">
+        <span class="hero-tag"><i class="fa-solid fa-star"></i> 2 Credits</span>
+        <span class="hero-tag"><i class="fa-solid fa-flask"></i> Theory</span>
+        <span class="hero-tag"><i class="fa-solid fa-layer-group"></i> 2nd Year</span>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="page-body">
+  <div class="sec-card">
+    <div class="sec-head">
+      <div class="sec-icon" style="background:#FAEEDA"><i class="fa-solid fa-book-open" style="color:#EF9F27"></i></div>
+      <div class="sec-title">Recommended Books</div>
+    </div>
+    <div class="sec-body"><div class="book-list">
+      <div class="book-item"><i class="fa-solid fa-book"></i>Calculus with Analytic Geometry — H. Anton</div>
+      <div class="book-item"><i class="fa-solid fa-book"></i>Calculus with Analytic Geometry — E. Swokowski</div>
+      <div class="book-item"><i class="fa-solid fa-book"></i>Calculus with Analytic Geometry — L. Bers and P. Karal</div>
+      <div class="book-item"><i class="fa-solid fa-book"></i>Calculus of Several Variables — S. Lang</div>
+    </div></div>
+  </div>
+</div>
+<script>
+  const html=document.documentElement,icon=document.getElementById('dark-icon');
+  const saved=localStorage.getItem('theme'),pd=window.matchMedia('(prefers-color-scheme: dark)').matches;
+  function setTheme(dark){html.setAttribute('data-theme',dark?'dark':'light');icon.textContent=dark?'light_mode':'dark_mode';localStorage.setItem('theme',dark?'dark':'light');}
+  setTheme(saved?saved==='dark':pd);
+  document.getElementById('dark-toggle').addEventListener('click',()=>setTheme(html.getAttribute('data-theme')!=='dark'));
+</script>
+</body>
+</html>
