@@ -63,6 +63,41 @@
     .topic-cb-check{display:none;width:10px;height:10px;}
     .topic-item.done .topic-cb-check{display:block;}
     @media(max-width:680px){.hero{padding:24px 18px 20px;}.hero-name{font-size:18px;}.page-body{padding:18px 14px 60px;}.topbar{padding:0 14px;}}
+  
+    /* ── mobile enhancements ── */
+    @media(max-width:680px){
+      html,body{overflow-x:hidden;}
+      .topbar{height:52px;gap:8px;}
+      .topbar-title{font-size:12px;}
+      .back-btn{padding:7px 10px;font-size:12px;}
+      .icon-btn{width:38px;height:38px;}
+      .hero-top{gap:13px;}
+      .hero-icon{width:46px;height:46px;font-size:21px;border-radius:12px;}
+      .hero-code{font-size:11px;}
+      .hero-tags{gap:6px;}
+      .hero-tag{font-size:10px;padding:4px 8px;}
+      .unit-head{padding:12px 14px;gap:10px;}
+      .unit-title{font-size:13px;}
+      .unit-body{padding:10px 12px;}
+      /* comfortable tap target for checking off topics */
+      .topic-item{font-size:13px;padding:9px 8px;min-height:44px;align-items:center;}
+      .page-body{gap:12px;}
+    }
+    @media(max-width:380px){
+      .hero{padding:20px 14px 18px;}
+      .hero-name{font-size:16.5px;}
+      .topic-item{font-size:12.5px;}
+    }
+  
+    .site-footer{
+      border-top:1px solid var(--border);
+      margin-top:8px;padding:22px 16px 30px;
+      display:flex;align-items:center;justify-content:center;gap:6px;
+      flex-wrap:wrap;text-align:center;
+      font-size:12px;color:var(--text-3);
+      background:var(--surface);
+    }
+    .site-footer .sf-name{font-family:'Hind Siliguri',sans-serif;font-weight:600;color:var(--text-2);}
   </style>
 </head>
 <body>
@@ -313,6 +348,11 @@
 
 
 </div>
+<footer class="site-footer">
+  <span class="sf-label">Developed By:</span>
+  <span class="sf-name">নিপাতনে সিদ্ধ Softwares</span>
+</footer>
+
 <script>
   const COURSE = 'ch7241';
   const TOTAL = 32;
@@ -359,9 +399,9 @@
   initTopics();
 
   const html=document.documentElement,icon=document.getElementById('dark-icon');
-  const saved=localStorage.getItem('theme'),pd=window.matchMedia('(prefers-color-scheme: dark)').matches;
+  const saved=localStorage.getItem('theme');
   function setTheme(dark){html.setAttribute('data-theme',dark?'dark':'light');icon.textContent=dark?'light_mode':'dark_mode';localStorage.setItem('theme',dark?'dark':'light');}
-  setTheme(saved?saved==='dark':pd);
+  setTheme(saved==='dark');/* default: light */
   document.getElementById('dark-toggle').addEventListener('click',()=>setTheme(html.getAttribute('data-theme')!=='dark'));
 </script>
 </body>

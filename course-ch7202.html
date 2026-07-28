@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>PML 204 — Physics Non-Major Practical</title>
+  <title>CH 7202 — Electrochemistry</title>
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
   <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300;400;500;600&family=Plus+Jakarta+Sans:wght@400;500;600&display=swap" rel="stylesheet"/>
@@ -11,7 +11,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
   <style>
     :root {
-      --accent:#7F77DD; --accent-light:#EEEDFE; --accent-mid:#534AB7;
+      --accent:#378ADD; --accent-light:#E6F1FB; --accent-mid:#185FA5;
       --bg:#F7F6F2; --surface:#FFFFFF; --surface2:#F2F1ED;
       --border:rgba(0,0,0,0.08); --border-md:rgba(0,0,0,0.13);
       --text:#1A1A18; --text-2:#5A5A56; --text-3:#9A9A96;
@@ -21,7 +21,7 @@
       --bg:#0d0d0d; --surface:#1a1a1a; --surface2:#242424;
       --border:rgba(255,255,255,0.08); --border-md:rgba(255,255,255,0.14);
       --text:#ececec; --text-2:#a8a8a0; --text-3:#5c5c58;
-      --accent-light:rgba(127,119,221,0.15); --accent-mid:#a9a4f0;
+      --accent-light:rgba(55,138,221,0.15); --accent-mid:#6badee;
     }
     *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
     html,body{min-height:100%;}
@@ -34,7 +34,7 @@
     .topbar-title span{color:var(--text);}
     .icon-btn{width:34px;height:34px;display:flex;align-items:center;justify-content:center;border-radius:var(--radius);cursor:pointer;border:1px solid var(--border-md);background:var(--surface2);color:var(--text-2);transition:background var(--tr);}
     .icon-btn:hover{background:var(--border-md);}
-    .hero{background:linear-gradient(135deg,#7F77DD 0%,#5040b0 100%);padding:36px 32px 32px;color:#fff;}
+    .hero{background:linear-gradient(135deg,#378ADD 0%,#1a5fa0 100%);padding:36px 32px 32px;color:#fff;}
     .hero-top{display:flex;align-items:flex-start;gap:18px;}
     .hero-icon{width:56px;height:56px;border-radius:14px;background:rgba(255,255,255,0.18);display:flex;align-items:center;justify-content:center;font-size:26px;flex-shrink:0;}
     .hero-code{font-size:12px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;opacity:0.75;margin-bottom:5px;}
@@ -94,18 +94,18 @@
 <body>
 <header class="topbar">
   <a class="back-btn" href="pathyasuci.html"><i class="fa-solid fa-arrow-left"></i> Back</a>
-  <div class="topbar-title">Courses / <span>PML 204</span></div>
+  <div class="topbar-title">Courses / <span>CH 7202</span></div>
   <div class="icon-btn" id="dark-toggle"><span class="material-symbols-outlined" id="dark-icon">dark_mode</span></div>
 </header>
 <div class="hero">
   <div class="hero-top">
-    <div class="hero-icon"><i class="fa-solid fa-ruler-combined"></i></div>
+    <div class="hero-icon"><i class="fa-solid fa-bolt"></i></div>
     <div>
-      <div class="hero-code">PML 204 &nbsp;·&nbsp; Physics Lab</div>
-      <div class="hero-name">Physics Non-Major Practical</div>
+      <div class="hero-code">CH 7202 &nbsp;·&nbsp; Physical Chemistry</div>
+      <div class="hero-name">Electrochemistry</div>
       <div class="hero-tags">
-        <span class="hero-tag"><i class="fa-solid fa-star"></i> 2 Credits</span>
-        <span class="hero-tag"><i class="fa-solid fa-flask-vial"></i> Lab</span>
+        <span class="hero-tag"><i class="fa-solid fa-star"></i> 3 Credits</span>
+        <span class="hero-tag"><i class="fa-solid fa-flask"></i> Theory</span>
         <span class="hero-tag"><i class="fa-solid fa-layer-group"></i> 2nd Year</span>
       </div>
     </div>
@@ -115,25 +115,24 @@
   <div class="two-col-sec">
     <div class="sec-card">
       <div class="sec-head">
-        <div class="sec-icon" style="background:#EEEDFE"><i class="fa-solid fa-bullseye" style="color:#7F77DD"></i></div>
+        <div class="sec-icon" style="background:#E6F1FB"><i class="fa-solid fa-bullseye" style="color:#378ADD"></i></div>
         <div class="sec-title">Learning Objectives</div>
       </div>
-      <div class="sec-body"><div class="point-list">
-        <div class="point-item"><div class="point-num">i</div><div>Use basic concepts of electricity and optics in practical purpose.</div></div>
-        <div class="point-item"><div class="point-num">ii</div><div>Develop skills to verify the basic laws of electricity and optics using respective instruments.</div></div>
-        <div class="point-item"><div class="point-num">iii</div><div>Develop skill for application of knowledge of electricity and optics.</div></div>
-      </div></div>
+      <div class="sec-body"><div class="point-list"><div class="point-item"><div class="point-num">i</div><div>Provide basic concept of electrolytes, conductance in detail and conductance behavior of weak and strong electrolytes.</div></div>
+<div class="point-item"><div class="point-num">ii</div><div>Give concepts on acid–base equilibria, buffer preparation, and theories of indicators.</div></div>
+<div class="point-item"><div class="point-num">iii</div><div>Acquaint with advanced idea on galvanic cells, cell reactions, electrode processes and electrical double layer.</div></div>
+<div class="point-item"><div class="point-num">iv</div><div>Provide idea on analytical applications of galvanic cells and industrial applications of electrochemical processes.</div></div></div></div>
     </div>
     <div class="sec-card">
       <div class="sec-head">
         <div class="sec-icon" style="background:#E6F1FB"><i class="fa-solid fa-graduation-cap" style="color:#378ADD"></i></div>
         <div class="sec-title">Learning Outcomes</div>
       </div>
-      <div class="sec-body"><div class="point-list">
-        <div class="point-item"><div class="point-num">i</div><div>Determine unknown resistance experimentally, verify laws of resistance, determine unknown high resistance, and compare e.m.f.s of two cells.</div></div>
-        <div class="point-item"><div class="point-num">ii</div><div>Use a spectrometer to measure the angle of a prism and find out the refractive index of the prism material.</div></div>
-        <div class="point-item"><div class="point-num">iii</div><div>Determine the unknown wavelength of light using Newton's ring experiment, biprism experiment, and diffraction grating experiment.</div></div>
-      </div></div>
+      <div class="sec-body"><div class="point-list"><div class="point-item"><div class="point-num">i</div><div>Describe behavior of weak and strong electrolytes, conductance-related terms, Kohlrausch's law and its applications.</div></div>
+<div class="point-item"><div class="point-num">ii</div><div>Achieve knowledge on acid–base equilibria, pH, pKa, pKb, pKw, pH range of an indicator, buffer solutions and their functions.</div></div>
+<div class="point-item"><div class="point-num">iii</div><div>Demonstrate knowledge on different types of cells and their reactions, electrode types and Nernst equation.</div></div>
+<div class="point-item"><div class="point-num">iv</div><div>Explain theories of electrolytes, activity, activity coefficients, Debye–Hückel limiting law and Debye–Hückel–Onsager equation.</div></div>
+<div class="point-item"><div class="point-num">v</div><div>Measure the e.m.f. of a cell and thermodynamic functions; use ion selective electrodes.</div></div></div></div>
     </div>
   </div>
   <div class="sec-card">
@@ -141,10 +140,11 @@
       <div class="sec-icon" style="background:#FAEEDA"><i class="fa-solid fa-book-open" style="color:#EF9F27"></i></div>
       <div class="sec-title">Recommended Books</div>
     </div>
-    <div class="sec-body"><div class="book-list">
-      <div class="book-item"><i class="fa-solid fa-book"></i>Practical Physics — G. Ahmed and M. Sahabuddin</div>
-      <div class="book-item"><i class="fa-solid fa-book"></i>Practical Physics — G. Kumar</div>
-    </div></div>
+    <div class="sec-body"><div class="book-list"><div class="book-item"><i class="fa-solid fa-book"></i>Physical Chemistry — P. Atkins and J. D. Paula</div>
+<div class="book-item"><i class="fa-solid fa-book"></i>Physical Chemistry — G. W. Castellan</div>
+<div class="book-item"><i class="fa-solid fa-book"></i>Physical Chemistry — G. M. Barrow</div>
+<div class="book-item"><i class="fa-solid fa-book"></i>Physical Chemistry — R. A. Alberty</div>
+<div class="book-item"><i class="fa-solid fa-book"></i>An Introduction to Electrochemistry — S. Glasstone</div></div></div>
   </div>
 </div>
 <footer class="site-footer">

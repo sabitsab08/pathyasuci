@@ -54,10 +54,10 @@
 
   <div class="sidebar-footer">
     <div class="user-card">
-      <div class="avatar">JH</div>
+      <div class="avatar" id="user-avatar">শি</div>
       <div>
-        <div class="user-name">Jayed H.</div>
-        <div class="user-role">২য় বর্ষ,রসায়ন</div>
+        <div class="user-name" id="user-name">শিক্ষার্থী</div>
+        <div class="user-role" id="user-role">২য় বর্ষ,রসায়ন</div>
       </div>
     </div>
   </div>
@@ -97,8 +97,8 @@
   <!-- ── DASHBOARD ── -->
   <div class="page active" id="page-dashboard">
     <div class="page-header">
-      <h1>স্বাগতম, Jayed 👋</h1>
-      <p>আজ আপনার ৩টি ক্লাস আছে। চলুন শুরু করি।</p>
+      <h1 id="dash-greeting">স্বাগতম</h1>
+      <p id="dash-subtitle">আপনার পড়াশোনার অগ্রগতি এক নজরে দেখে নিন।</p>
     </div>
     <div class="stats-grid">
       <div class="stat-card">
@@ -108,8 +108,8 @@
           </div>
         </div>
         <div class="stat-label">মোট কোর্স</div>
-        <div class="stat-value">8</div>
-        <div class="stat-sub">৩টি চলমান</div>
+        <div class="stat-value" id="dash-total-courses">—</div>
+        <div class="stat-sub" id="dash-total-credits">— ক্রেডিট</div>
       </div>
       <div class="stat-card">
         <div class="stat-icon-row">
@@ -117,9 +117,9 @@
             <span class="material-symbols-outlined" style="color:var(--blue)">check_circle</span>
           </div>
         </div>
-        <div class="stat-label">সম্পন্ন অধ্যায়</div>
-        <div class="stat-value">47</div>
-        <div class="stat-sub">+5 এই সপ্তাহে</div>
+        <div class="stat-label">সম্পন্ন টপিক</div>
+        <div class="stat-value" id="dash-done-topics">—</div>
+        <div class="stat-sub" id="dash-total-topics">মোট — টপিক</div>
       </div>
       <div class="stat-card">
         <div class="stat-icon-row">
@@ -129,33 +129,31 @@
         </div>
         <div class="stat-label">সিলেবাস সম্পন্ন</div>
         <div class="stat-value" id="dash-overall-pct">0%</div>
-        <div class="stat-sub" id="dash-overall-sub">লোড হচ্ছে...</div>
+        <div class="stat-sub" id="dash-overall-sub">শুরু করুন</div>
       </div>
       <div class="stat-card">
         <div class="stat-icon-row">
           <div class="stat-icon" style="background:var(--amber-light)">
-            <span class="material-symbols-outlined" style="color:var(--amber)">schedule</span>
+            <span class="material-symbols-outlined" style="color:var(--amber)">pending_actions</span>
           </div>
         </div>
-        <div class="stat-label">পড়ার সময়</div>
-        <div class="stat-value">24h</div>
-        <div class="stat-sub">এই মাসে</div>
+        <div class="stat-label">বাকি টপিক</div>
+        <div class="stat-value" id="dash-left-topics">—</div>
+        <div class="stat-sub" id="dash-active-courses">— টি কোর্সে অগ্রগতি</div>
       </div>
     </div>
     <div class="two-col">
       <div class="card">
         <div class="card-title"><span class="material-symbols-outlined">bolt</span> সাম্প্রতিক কার্যক্রম</div>
-        <div class="activity-item"><div class="act-dot" style="background:#1D9E75"></div><div class="act-text">Pharmacology Ch.6 শেষ করেছেন</div><div class="act-time">১ ঘন্টা আগে</div></div>
-        <div class="activity-item"><div class="act-dot" style="background:#378ADD"></div><div class="act-text">MCQ Practice — 18/20</div><div class="act-time">৩ ঘন্টা আগে</div></div>
-        <div class="activity-item"><div class="act-dot" style="background:#7F77DD"></div><div class="act-text">Biochemistry Notes আপলোড</div><div class="act-time">গতকাল</div></div>
-        <div class="activity-item"><div class="act-dot" style="background:#EF9F27"></div><div class="act-text">Goal "ফার্মাকোলজি শেষ" আপডেট</div><div class="act-time">গতকাল</div></div>
+        <div id="dash-activity-list">
+          <div class="dash-empty">এখনও কোনো টপিক সম্পন্ন হয়নি। সিলেবাস থেকে টপিক সম্পন্ন করলে এখানে প্রদর্শিত হবে।</div>
+        </div>
       </div>
       <div class="card">
-        <div class="card-title"><span class="material-symbols-outlined">event</span> আসন্ন পরীক্ষা</div>
-        <div class="upcoming-item"><div class="date-badge">২৫ মে</div><div><div class="upcoming-title">Pharmacology Mid</div><div class="upcoming-sub">Chapter 1–8 · সকাল ১০টা</div></div></div>
-        <div class="upcoming-item"><div class="date-badge">২ জুন</div><div><div class="upcoming-title">Biochemistry Viva</div><div class="upcoming-sub">Metabolism Unit</div></div></div>
-        <div class="upcoming-item"><div class="date-badge">১০ জুন</div><div><div class="upcoming-title">Pathology Final</div><div class="upcoming-sub">Full Syllabus</div></div></div>
-        <div class="upcoming-item"><div class="date-badge">১৮ জুন</div><div><div class="upcoming-title">Microbiology Practical</div><div class="upcoming-sub">Lab Hall B</div></div></div>
+        <div class="card-title"><span class="material-symbols-outlined">flag</span> ফোকাস — যেসব কোর্স এগিয়ে নিতে হবে</div>
+        <div id="dash-focus-list">
+          <div class="dash-empty">সবগুলো কোর্স সম্পূর্ণ হয়েছে।</div>
+        </div>
       </div>
     </div>
   </div>
@@ -341,7 +339,7 @@
       <div id="cdp-body">
         <div class="cdp-placeholder">
           <i class="fa-solid fa-layer-group"></i>
-          এই কোর্সের details এখানে দেখাবে — তুমি বললে add করব।
+          কোর্সের বিস্তারিত তথ্য দেখতে উপরের তালিকা থেকে একটি কোর্স নির্বাচন করুন।
         </div>
       </div>
     </div>
@@ -359,7 +357,7 @@
       <!-- ── CHEMISTRY ── -->
       <div class="syl-dept-label"><i class="fa-solid fa-flask"></i> Chemistry</div>
 
-      <div class="syllabus-item open">
+      <div class="syllabus-item">
         <div class="syllabus-header">
           <div class="syl-icon" style="background:#E1F5EE"><i class="fa-solid fa-fire-flame-curved" style="color:#1D9E75;font-size:17px"></i></div>
           <div>
@@ -703,16 +701,10 @@
     <!-- Weekly reading time -->
     <div class="progress-week-card">
       <div class="pw-title">
-        <span class="material-symbols-outlined">calendar_month</span> সাপ্তাহিক পড়ার সময় (ঘন্টা)
+        <span class="material-symbols-outlined">donut_small</span> বিভাগভিত্তিক সম্পন্নতা
       </div>
-      <div class="progress-week">
-        <div class="week-day"><div class="day-name">শনি</div><div class="week-bar-wrap"><div class="week-bar" style="height:60%"></div></div><div class="day-h">2.4h</div></div>
-        <div class="week-day"><div class="day-name">রবি</div><div class="week-bar-wrap"><div class="week-bar" style="height:80%"></div></div><div class="day-h">3.2h</div></div>
-        <div class="week-day"><div class="day-name">সোম</div><div class="week-bar-wrap"><div class="week-bar" style="height:50%"></div></div><div class="day-h">2.0h</div></div>
-        <div class="week-day"><div class="day-name">মঙ্গ</div><div class="week-bar-wrap"><div class="week-bar" style="height:100%"></div></div><div class="day-h">4.0h</div></div>
-        <div class="week-day"><div class="day-name">বুধ</div><div class="week-bar-wrap"><div class="week-bar" style="height:70%"></div></div><div class="day-h">2.8h</div></div>
-        <div class="week-day"><div class="day-name">বৃহ</div><div class="week-bar-wrap"><div class="week-bar" style="height:40%"></div></div><div class="day-h">1.6h</div></div>
-        <div class="week-day"><div class="day-name">শুক্র</div><div class="week-bar-wrap"><div class="week-bar" style="height:55%"></div></div><div class="day-h">2.2h</div></div>
+      <div class="progress-week" id="prog-dept-week">
+        <!-- filled by JS: one bar per department -->
       </div>
     </div>
   </div>
@@ -721,77 +713,147 @@
   <div class="page" id="page-mygoal">
     <div class="page-header">
       <h1>My Goal</h1>
-      <p>আপনার নির্ধারিত লক্ষ্যসমূহ</p>
+      <p>বিভাগভিত্তিক লক্ষ্য — সিলেবাসের বাস্তব অগ্রগতি অনুযায়ী স্বয়ংক্রিয় আপডেট</p>
     </div>
-    <div class="goals-grid">
-      <div class="goal-card">
-        <div class="goal-top">
-          <div class="goal-icon" style="background:var(--green-light)">
-            <span class="material-symbols-outlined" style="color:var(--green)">medication</span>
-          </div>
-          <div class="goal-info">
-            <div class="goal-title">Pharmacology সম্পন্ন করা</div>
-            <div class="goal-deadline">শেষ তারিখ: ৩০ মে ২০২৬</div>
-          </div>
-          <span class="goal-status status-on">ট্র্যাকে</span>
-        </div>
-        <div class="goal-prog-row">
-          <div class="goal-bar"><div class="goal-fill" style="width:68%;background:#1D9E75"></div></div>
-          <span class="goal-pct">68%</span>
-        </div>
-      </div>
-      <div class="goal-card">
-        <div class="goal-top">
-          <div class="goal-icon" style="background:var(--blue-light)">
-            <span class="material-symbols-outlined" style="color:var(--blue)">biotech</span>
-          </div>
-          <div class="goal-info">
-            <div class="goal-title">Biochemistry মিড প্রস্তুতি</div>
-            <div class="goal-deadline">শেষ তারিখ: ২ জুন ২০২৬</div>
-          </div>
-          <span class="goal-status status-late">পিছিয়ে</span>
-        </div>
-        <div class="goal-prog-row">
-          <div class="goal-bar"><div class="goal-fill" style="width:45%;background:#378ADD"></div></div>
-          <span class="goal-pct">45%</span>
-        </div>
-      </div>
-      <div class="goal-card">
-        <div class="goal-top">
-          <div class="goal-icon" style="background:var(--purple-light)">
-            <span class="material-symbols-outlined" style="color:var(--purple)">auto_stories</span>
-          </div>
-          <div class="goal-info">
-            <div class="goal-title">প্রতিদিন ২ ঘণ্টা পড়া</div>
-            <div class="goal-deadline">চলমান · সাপ্তাহিক লক্ষ্য</div>
-          </div>
-          <span class="goal-status status-on">ট্র্যাকে</span>
-        </div>
-        <div class="goal-prog-row">
-          <div class="goal-bar"><div class="goal-fill" style="width:85%;background:#7F77DD"></div></div>
-          <span class="goal-pct">85%</span>
-        </div>
-      </div>
-      <div class="goal-card">
-        <div class="goal-top">
-          <div class="goal-icon" style="background:var(--amber-light)">
-            <span class="material-symbols-outlined" style="color:var(--amber)">military_tech</span>
-          </div>
-          <div class="goal-info">
-            <div class="goal-title">Final Exam GPA 3.8+</div>
-            <div class="goal-deadline">শেষ তারিখ: জুলাই ২০২৬</div>
-          </div>
-          <span class="goal-status status-on">ট্র্যাকে</span>
-        </div>
-        <div class="goal-prog-row">
-          <div class="goal-bar"><div class="goal-fill" style="width:60%;background:#EF9F27"></div></div>
-          <span class="goal-pct">60%</span>
-        </div>
-      </div>
+    <div class="goals-grid" id="goals-grid">
+      <!-- filled by JS from real progress -->
     </div>
   </div>
 
+<footer class="site-footer">
+  <span class="sf-label">Developed By:</span>
+  <span class="sf-name">নিপাতনে সিদ্ধ Softwares</span>
+</footer>
 </main>
+
+
+<!-- ══════ ONBOARDING (first visit) ══════ -->
+<div class="onb-overlay" id="onb-overlay" role="dialog" aria-modal="true" aria-labelledby="onb-heading">
+  <div class="onb-card">
+
+    <div class="onb-stage">
+      <!-- মাসকট: পাতা — an open book that reads along with you -->
+      <svg class="mascot" viewBox="0 0 120 120" aria-hidden="true">
+        <ellipse cx="60" cy="109" rx="29" ry="4.5" fill="rgba(0,0,0,0.16)"/>
+        <g class="mascot-body">
+          <rect x="21" y="27" width="78" height="68" rx="11" fill="#F7F6F2"/>
+          <rect x="25" y="31" width="70" height="60" rx="8" fill="#fff"/>
+          <rect x="56" y="29" width="8" height="64" rx="4" fill="#E1F5EE"/>
+          <path d="M84 27 v22 l-5.5 -5.5 l-5.5 5.5 v-22 z" fill="#EF9F27"/>
+          <circle cx="43" cy="57" r="5" fill="#1A1A18" class="eye"/>
+          <circle cx="77" cy="57" r="5" fill="#1A1A18" class="eye"/>
+          <circle cx="44.6" cy="55.2" r="1.7" fill="#fff"/>
+          <circle cx="78.6" cy="55.2" r="1.7" fill="#fff"/>
+          <circle cx="34" cy="67" r="4.5" fill="#D4537E" opacity="0.22"/>
+          <circle cx="86" cy="67" r="4.5" fill="#D4537E" opacity="0.22"/>
+          <path d="M49 71 q11 9.5 22 0" stroke="#1A1A18" stroke-width="3" fill="none" stroke-linecap="round"/>
+          <path d="M31 84 h18 M71 84 h18" stroke="#E1F5EE" stroke-width="3" stroke-linecap="round"/>
+        </g>
+        <g class="mascot-hand">
+          <circle cx="103" cy="63" r="8.5" fill="#EF9F27"/>
+          <circle cx="103" cy="63" r="8.5" fill="none" stroke="#d98d1c" stroke-width="1"/>
+        </g>
+      </svg>
+      <div class="mascot-name">পাতা</div>
+    </div>
+
+    <div class="onb-body">
+
+      <!-- step 1 — name -->
+      <div class="onb-step active" data-step="1">
+        <div class="onb-title" id="onb-heading">পাঠ্যসূচিতে স্বাগতম</div>
+        <div class="onb-text">
+          আমি পাতা — আপনার কোর্স ও সিলেবাসের অগ্রগতি সংরক্ষণে সহায়তা করব।
+          শুরু করার আগে আপনার নামটি লিখুন।
+        </div>
+        <input class="onb-input" id="onb-name" type="text" maxlength="30"
+               placeholder="আপনার নাম" autocomplete="name" />
+        <div class="onb-err" id="onb-err">এগিয়ে যেতে একটি নাম লিখুন।</div>
+        <div class="onb-actions">
+          <button class="onb-skip" id="onb-skip">এড়িয়ে যান</button>
+          <button class="onb-btn" id="onb-next-1">পরবর্তী</button>
+        </div>
+      </div>
+
+      <!-- step 2 — features -->
+      <div class="onb-step" data-step="2">
+        <div class="onb-title" id="onb-greet">প্রধান সুবিধাসমূহ</div>
+        <div class="onb-text" style="margin-bottom:6px">চারটি বিভাগে সাজানো।</div>
+
+        <div class="onb-feat">
+          <div class="onb-feat-icon" style="background:var(--green-light)">
+            <span class="material-symbols-outlined" style="color:var(--green)">library_books</span>
+          </div>
+          <div>
+            <div class="onb-feat-t">Courses</div>
+            <div class="onb-feat-d">১৪টি কোর্সের উদ্দেশ্য, শিখনফল ও প্রস্তাবিত বইয়ের তালিকা।</div>
+          </div>
+        </div>
+
+        <div class="onb-feat">
+          <div class="onb-feat-icon" style="background:var(--blue-light)">
+            <span class="material-symbols-outlined" style="color:var(--blue)">checklist</span>
+          </div>
+          <div>
+            <div class="onb-feat-t">Syllabus</div>
+            <div class="onb-feat-d">অধ্যয়ন শেষে টপিকে ক্লিক করুন — অগ্রগতি স্বয়ংক্রিয়ভাবে সংরক্ষিত হবে।</div>
+          </div>
+        </div>
+
+        <div class="onb-feat">
+          <div class="onb-feat-icon" style="background:var(--purple-light)">
+            <span class="material-symbols-outlined" style="color:var(--purple)">trending_up</span>
+          </div>
+          <div>
+            <div class="onb-feat-t">Progress</div>
+            <div class="onb-feat-d">কোর্সভিত্তিক অগ্রগতি ও বিভাগওয়ারি সম্পন্নতার পরিসংখ্যান।</div>
+          </div>
+        </div>
+
+        <div class="onb-feat">
+          <div class="onb-feat-icon" style="background:var(--amber-light)">
+            <span class="material-symbols-outlined" style="color:var(--amber)">target</span>
+          </div>
+          <div>
+            <div class="onb-feat-t">My Goal</div>
+            <div class="onb-feat-d">বিভাগভিত্তিক লক্ষ্য, আপনার অগ্রগতি অনুযায়ী স্বয়ংক্রিয়ভাবে হালনাগাদ।</div>
+          </div>
+        </div>
+
+        <div class="onb-actions">
+          <button class="onb-skip" id="onb-back-2">পূর্ববর্তী</button>
+          <button class="onb-btn" id="onb-next-2">পরবর্তী</button>
+        </div>
+      </div>
+
+      <!-- step 3 — dark mode -->
+      <div class="onb-step" data-step="3">
+        <div class="onb-title">প্রদর্শন মোড</div>
+        <div class="onb-text">
+          অ্যাপ্লিকেশনটি লাইট মোডে চালু হয়। রাতে অধ্যয়নের সময় বা দীর্ঘক্ষণ ব্যবহারে
+          চোখে চাপ অনুভব করলে ডার্ক মোড ব্যবহার করার পরামর্শ দেওয়া হচ্ছে।
+        </div>
+        <div class="onb-tip">
+          <span class="material-symbols-outlined">dark_mode</span>
+          <div class="onb-tip-txt">
+            উপরের ডানদিকের <strong>চাঁদের আইকনে</strong> ক্লিক করে যেকোনো সময় মোড পরিবর্তন করতে পারবেন।
+            আপনার পছন্দ সংরক্ষিত থাকবে।
+          </div>
+        </div>
+        <div class="onb-actions">
+          <button class="onb-skip" id="onb-back-3">পূর্ববর্তী</button>
+          <button class="onb-btn" id="onb-done">শুরু করুন</button>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="onb-dots">
+      <div class="onb-dot on"></div><div class="onb-dot"></div><div class="onb-dot"></div>
+    </div>
+
+  </div>
+</div>
 
 <!-- ══════ BOTTOM NAV (mobile) ══════ -->
 <nav class="bottom-nav">
@@ -830,6 +892,7 @@
     closeSearch();
     if (page === 'progress') refreshProgress();
     if (page === 'dashboard') refreshDashboard();
+    if (page === 'mygoal') refreshGoals();
   }
   document.querySelectorAll('.nav-item').forEach(i => i.addEventListener('click', () => { navigate(i.dataset.page); closeSidebar(); }));
   document.querySelectorAll('.bnav-item').forEach(i => i.addEventListener('click', () => navigate(i.dataset.page)));
@@ -854,8 +917,7 @@
     localStorage.setItem('theme', dark ? 'dark' : 'light');
   }
   const saved = localStorage.getItem('theme');
-  const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-  setTheme(saved ? saved === 'dark' : prefersDark);
+  setTheme(saved === 'dark');            // default: light
   document.getElementById('dark-toggle').addEventListener('click', () => setTheme(html.getAttribute('data-theme') !== 'dark'));
   document.getElementById('mobile-dark-btn').addEventListener('click', () => setTheme(html.getAttribute('data-theme') !== 'dark'));
 
@@ -885,94 +947,289 @@
     document.querySelectorAll('.course-row').forEach(r => r.classList.remove('selected'));
   });
 
+  /* Two affordances per row:
+       · the arrow opens the full syllabus page
+       · the row itself expands a preview of that course's units
+     (previously every row had data-sylhref, so the expand branch was
+      unreachable and all 14 unit previews were dead markup) */
   document.querySelectorAll('.syllabus-header').forEach(h => {
-    h.addEventListener('click', () => {
-      const sub = h.querySelector('[data-sylhref]');
-      if (sub) { window.location.href = sub.dataset.sylhref; }
-      else { h.closest('.syllabus-item').classList.toggle('open'); }
+    const item = h.closest('.syllabus-item');
+    const sub  = h.querySelector('[data-sylhref]');
+    const go   = h.querySelector('.syl-goto');
+    const body = item.querySelector('.syllabus-topics');
+
+    if (go && sub) {
+      go.title = 'সম্পূর্ণ সিলেবাস খুলুন';
+      go.setAttribute('role', 'button');
+      go.setAttribute('tabindex', '0');
+      go.setAttribute('aria-label', 'সম্পূর্ণ সিলেবাস খুলুন');
+      const open = e => { e.stopPropagation(); window.location.href = sub.dataset.sylhref; };
+      go.addEventListener('click', open);
+      go.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') open(e); });
+    }
+
+    if (!body) return;
+    h.setAttribute('role', 'button');
+    h.setAttribute('tabindex', '0');
+    h.setAttribute('aria-expanded', 'false');
+    const toggle = () => {
+      const wasOpen = item.classList.contains('open');
+      // one open at a time keeps the list scannable
+      document.querySelectorAll('.syllabus-item.open').forEach(i => {
+        i.classList.remove('open');
+        i.querySelector('.syllabus-header')?.setAttribute('aria-expanded', 'false');
+      });
+      if (!wasOpen) { item.classList.add('open'); h.setAttribute('aria-expanded', 'true'); }
+    };
+    h.addEventListener('click', toggle);
+    h.addEventListener('keydown', e => {
+      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggle(); }
     });
   });
 
   /* ══════════════════════════════════════
      PROGRESS SYSTEM — reads localStorage written by syllabus pages
   ══════════════════════════════════════ */
+  /* ── Student profile: edit here only; UI reads from this ── */
+  const NAME_KEY = 'ps_student_name';
+  const STUDENT = {
+    name: localStorage.getItem(NAME_KEY) || 'শিক্ষার্থী',   // neutral until they tell us
+    year: '২য় বর্ষ',
+    dept: 'রসায়ন',
+  };
+  function setStudentName(n) {
+    STUDENT.name = n;
+    STUDENT.initials = n.split(/\s+/).filter(Boolean).map(w => w[0]).join('').toUpperCase().slice(0,2) || 'শি';
+    localStorage.setItem(NAME_KEY, n);
+  }
+  STUDENT.initials = STUDENT.name.split(/\s+/).filter(Boolean).map(w => w[0]).join('').toUpperCase().slice(0,2);
+
+  function applyProfile() {
+    const set = (id, v) => { const e = document.getElementById(id); if (e) e.textContent = v; };
+    set('user-name', STUDENT.name);
+    set('user-role', STUDENT.year + ', ' + STUDENT.dept);
+    set('user-avatar', STUDENT.initials);
+  }
+
+  /* Single source of truth. credits match the Courses page badges;
+     dept groups feed the goal cards. Everything else is derived. */
   const COURSES_META = [
-    { id:'ch7201',  name:'Chemical Thermo.',   color:'#1D9E75' },
-    { id:'ch7202',  name:'Electrochemistry',   color:'#378ADD' },
-    { id:'ch7221',  name:'Organic Chem. II',   color:'#7F77DD' },
-    { id:'ch7222',  name:'Stereochemistry',    color:'#D4537E' },
-    { id:'ch7241',  name:'Rep. Elements',      color:'#EF9F27' },
-    { id:'chl202',  name:'Phys. Chem. Lab',    color:'#639922' },
-    { id:'chl242',  name:'Quant. Inorg. Anal.',color:'#1D9E75' },
-    { id:'pm7211',  name:'Optics',             color:'#378ADD' },
-    { id:'pm7223',  name:'Electricity & Mag.', color:'#D4537E' },
-    { id:'pml204',  name:'Physics Practical',  color:'#7F77DD' },
-    { id:'mam202a', name:'Calculus II',        color:'#EF9F27' },
-    { id:'mam203a', name:'ODEs',               color:'#639922' },
-    { id:'mam204a', name:'Numerical Analysis', color:'#1D9E75' },
-    { id:'mtm205',  name:'Mathematical Methods',color:'#378ADD'},
+    { id:'ch7201',  code:'CH 7201',  name:'Chemical Thermodynamics',       short:'Chemical Thermo.',    dept:'Chemistry',     credits:3, topics:22, color:'#1D9E75' },
+    { id:'ch7202',  code:'CH 7202',  name:'Electrochemistry',              short:'Electrochemistry',    dept:'Chemistry',     credits:3, topics:22, color:'#378ADD' },
+    { id:'ch7221',  code:'CH 7221',  name:'Organic Chemistry II',          short:'Organic Chem. II',    dept:'Chemistry',     credits:3, topics:18, color:'#7F77DD' },
+    { id:'ch7222',  code:'CH 7222',  name:'Stereochemistry',               short:'Stereochemistry',     dept:'Chemistry',     credits:3, topics:19, color:'#D4537E' },
+    { id:'ch7241',  code:'CH 7241',  name:'Representative Elements',        short:'Rep. Elements',       dept:'Chemistry',     credits:4, topics:32, color:'#EF9F27' },
+    { id:'chl202',  code:'CHL 202',  name:'Physical Chemistry Lab I',      short:'Phys. Chem. Lab',     dept:'Chemistry Lab', credits:2, topics:20, color:'#639922' },
+    { id:'chl242',  code:'CHL 242',  name:'Quantitative Inorganic Anal.',  short:'Quant. Inorg. Anal.', dept:'Chemistry Lab', credits:4, topics:15, color:'#1D9E75' },
+    { id:'pm7211',  code:'PM 7211',  name:'Optics',                        short:'Optics',              dept:'Physics',       credits:2, topics:10, color:'#378ADD' },
+    { id:'pm7223',  code:'PM 7223',  name:'Electricity and Magnetism',     short:'Electricity & Mag.',  dept:'Physics',       credits:2, topics:10, color:'#D4537E' },
+    { id:'pml204',  code:'PML 204',  name:'Physics Non-Major Practical',   short:'Physics Practical',   dept:'Physics',       credits:2, topics:10, color:'#7F77DD' },
+    { id:'mam202a', code:'MAM 202A', name:'Calculus II',                   short:'Calculus II',         dept:'Mathematics',   credits:2, topics:15, color:'#EF9F27' },
+    { id:'mam203a', code:'MAM 203A', name:'Ordinary Differential Eqns',    short:'ODEs',                dept:'Mathematics',   credits:2, topics:14, color:'#639922' },
+    { id:'mam204a', code:'MAM 204A', name:'Numerical Analysis',            short:'Numerical Analysis',  dept:'Mathematics',   credits:2, topics:10, color:'#1D9E75' },
+    { id:'mtm205',  code:'MTM 205',  name:'Mathematical Methods',          short:'Mathematical Methods',dept:'Mathematics',   credits:2, topics:14, color:'#378ADD' },
   ];
 
-  function getCourseStats(id) {
-    const total = parseInt(localStorage.getItem('prog_'+id+'_total')||'0');
-    const done  = parseInt(localStorage.getItem('prog_'+id+'_done')||'0');
-    return { total, done };
+  const DEPT_META = {
+    'Chemistry':     { icon:'science',   color:'var(--green)',  bg:'var(--green-light)'  },
+    'Chemistry Lab': { icon:'biotech',   color:'var(--blue)',   bg:'var(--blue-light)'   },
+    'Physics':       { icon:'bolt',      color:'var(--purple)', bg:'var(--purple-light)' },
+    'Mathematics':   { icon:'functions', color:'var(--amber)',  bg:'var(--amber-light)'  },
+  };
+
+  const BN = { '0':'০','1':'১','2':'২','3':'৩','4':'৪','5':'৫','6':'৬','7':'৭','8':'৮','9':'৯' };
+  const toBn = n => String(n).replace(/\d/g, d => BN[d]);
+
+  /* done comes from localStorage (written by syllabus pages); total is the
+     authoritative topic count from metadata, so figures are correct even
+     before a syllabus page has been opened. */
+  function getCourseDone(id) {
+    // prefer the raw progress map (survives even if the *_done mirror is stale)
+    try {
+      const raw = JSON.parse(localStorage.getItem('prog_'+id)||'{}');
+      const n = Object.values(raw).filter(Boolean).length;
+      if (n) return n;
+    } catch(e) {}
+    return parseInt(localStorage.getItem('prog_'+id+'_done')||'0');
+  }
+
+  /* Compute the whole picture once; every view reads from this. */
+  function computeStats() {
+    let grandTotal = 0, grandDone = 0, pctSum = 0, activeCount = 0, doneCourses = 0;
+    const rows = COURSES_META.map(c => {
+      const total = c.topics;
+      const done  = Math.min(getCourseDone(c.id), total);
+      const pct = total ? Math.round(done/total*100) : 0;
+      grandTotal += total; grandDone += done; pctSum += pct;
+      if (done > 0 && pct < 100) activeCount++;
+      if (total > 0 && pct === 100) doneCourses++;
+      return { ...c, total, done, pct };
+    });
+    const overallPct = Math.round(pctSum / COURSES_META.length);
+    const totalCredits = COURSES_META.reduce((s,c) => s + c.credits, 0);
+    return { rows, grandTotal, grandDone, overallPct, activeCount, doneCourses, totalCredits };
   }
 
   function refreshProgress() {
-    let totalPctSum = 0, grandTotal = 0, grandDone = 0;
+    const s = computeStats();
     const listEl = document.getElementById('prog-course-list');
     listEl.innerHTML = '';
-    COURSES_META.forEach((c, i) => {
-      const { total, done } = getCourseStats(c.id);
-      grandTotal += total;
-      grandDone  += done;
-      const pct = total ? Math.round(done/total*100) : 0;
-      totalPctSum += pct;
-      const delay = i * 60;
+    // Show the least-complete first so the list is actually useful.
+    const ordered = [...s.rows].sort((a,b) => a.pct - b.pct);
+    ordered.forEach((c, i) => {
+      const delay = i * 50;
       listEl.innerHTML += `
         <div class="subj-row" style="animation-delay:${delay}ms">
           <div class="subj-dot" style="background:${c.color};animation-delay:${delay}ms"></div>
-          <span class="subj-name">${c.name}</span>
+          <span class="subj-name">${c.short}</span>
           <div class="subj-bar-wrap">
             <div class="subj-bar">
-              <div class="subj-fill" style="width:${pct}%;background:${c.color};animation-delay:${delay}ms"></div>
+              <div class="subj-fill" style="width:${c.pct}%;background:${c.color};animation-delay:${delay}ms"></div>
             </div>
           </div>
-          <span class="subj-pct">${pct}%</span>
+          <span class="subj-pct">${c.pct}%</span>
         </div>`;
     });
-    // Overall = average of all 14 course percentages
-    const overallPct = Math.round(totalPctSum / COURSES_META.length);
-    document.getElementById('prog-overall-pct').textContent = overallPct+'%';
-    document.getElementById('prog-overall-label').textContent = grandDone+' / '+grandTotal+' topic সম্পন্ন';
-    const chipDone = document.getElementById('prog-chip-done');
-    const chipLeft = document.getElementById('prog-chip-left');
-    if(chipDone) chipDone.textContent = grandDone;
-    if(chipLeft) chipLeft.textContent = grandTotal - grandDone;
-    const circ = 2*Math.PI*52; // ~327
-    const arc = (overallPct/100)*circ;
+    document.getElementById('prog-overall-pct').textContent = s.overallPct+'%';
+    document.getElementById('prog-overall-label').textContent =
+      s.grandTotal ? `${toBn(s.grandDone)} / ${toBn(s.grandTotal)} টপিক সম্পন্ন` : 'সিলেবাসে টপিক টিক দিয়ে শুরু করুন';
+    const setTxt = (id,v) => { const e=document.getElementById(id); if(e) e.textContent=v; };
+    setTxt('prog-chip-courses', toBn(COURSES_META.length));
+    setTxt('prog-chip-done', toBn(s.grandDone));
+    setTxt('prog-chip-left', toBn(s.grandTotal - s.grandDone));
+    const circ = 2*Math.PI*52;
+    const arc = (s.overallPct/100)*circ;
     document.getElementById('prog-donut-arc').setAttribute('stroke-dasharray', arc+' '+circ);
+
+    // department completion bars
+    const weekEl = document.getElementById('prog-dept-week');
+    if (weekEl) {
+      const depts = {};
+      s.rows.forEach(c => {
+        const d = depts[c.dept] || (depts[c.dept] = { total:0, done:0 });
+        d.total += c.total; d.done += c.done;
+      });
+      weekEl.innerHTML = Object.keys(depts).map(dept => {
+        const d = depts[dept];
+        const pct = d.total ? Math.round(d.done/d.total*100) : 0;
+        const m = DEPT_META[dept] || { color:'var(--green)' };
+        return `
+          <div class="week-day">
+            <div class="week-bar-wrap">
+              <div class="week-bar" style="height:${Math.max(pct,3)}%;background:${m.color}"></div>
+            </div>
+            <div class="day-h">${pct}%</div>
+            <div class="day-name">${dept.replace('Chemistry Lab','Chem Lab')}</div>
+          </div>`;
+      }).join('');
+    }
   }
 
   function refreshDashboard() {
-    let totalPctSum = 0, grandTotal = 0, grandDone = 0;
-    COURSES_META.forEach(c => {
-      const { total, done } = getCourseStats(c.id);
-      grandTotal += total; grandDone += done;
-      const pct = total ? Math.round(done/total*100) : 0;
-      totalPctSum += pct;
+    const s = computeStats();
+    const setTxt = (id,v) => { const e=document.getElementById(id); if(e) e.textContent=v; };
+
+    setTxt('dash-total-courses', toBn(COURSES_META.length));
+    setTxt('dash-total-credits', toBn(s.totalCredits)+' ক্রেডিট');
+    setTxt('dash-done-topics', toBn(s.grandDone));
+    setTxt('dash-total-topics', 'মোট '+toBn(s.grandTotal)+' টপিক');
+    setTxt('dash-overall-pct', s.overallPct+'%');
+    setTxt('dash-overall-sub', s.doneCourses ? toBn(s.doneCourses)+' টি কোর্স সম্পূর্ণ' : 'চলতে থাকুন');
+    setTxt('dash-left-topics', toBn(s.grandTotal - s.grandDone));
+    setTxt('dash-active-courses', toBn(s.activeCount)+' টি কোর্সে অগ্রগতি');
+
+    // greeting reflects real state
+    const greet = document.getElementById('dash-greeting');
+    const sub = document.getElementById('dash-subtitle');
+    if (greet) {
+      const hr = new Date().getHours();
+      const part = hr < 12 ? 'সুপ্রভাত' : hr < 17 ? 'শুভ অপরাহ্ন' : 'শুভ সন্ধ্যা';
+      greet.textContent = `${part}, ${STUDENT.name.split(' ')[0]}`;
+    }
+    if (sub) {
+      sub.textContent = s.grandDone === 0
+        ? 'শুরু করতে যেকোনো কোর্সের সিলেবাস খুলে টপিক সম্পন্ন চিহ্নিত করুন।'
+        : `আপনি ইতিমধ্যে ${toBn(s.grandDone)} টি টপিক শেষ করেছেন — সিলেবাস ${s.overallPct}% সম্পন্ন।`;
+    }
+
+    // ── Recent activity: courses with progress, most complete first ──
+    const actEl = document.getElementById('dash-activity-list');
+    if (actEl) {
+      const active = s.rows.filter(c => c.done > 0).sort((a,b) => b.pct - a.pct).slice(0, 5);
+      if (!active.length) {
+        actEl.innerHTML = '<div class="dash-empty">এখনও কোনো টপিক সম্পন্ন হয়নি। সিলেবাস থেকে টপিক সম্পন্ন করলে এখানে প্রদর্শিত হবে।</div>';
+      } else {
+        actEl.innerHTML = active.map(c => `
+          <div class="activity-item">
+            <div class="act-dot" style="background:${c.color}"></div>
+            <div class="act-text">${c.short} — ${toBn(c.done)}/${toBn(c.total)} টপিক</div>
+            <div class="act-time">${c.pct}%</div>
+          </div>`).join('');
+      }
+    }
+
+    // ── Focus: started-but-unfinished courses with the lowest completion ──
+    const focusEl = document.getElementById('dash-focus-list');
+    if (focusEl) {
+      const focus = s.rows.filter(c => c.pct < 100).sort((a,b) => a.pct - b.pct).slice(0, 5);
+      if (!focus.length) {
+        focusEl.innerHTML = '<div class="dash-empty">সবগুলো কোর্স সম্পূর্ণ হয়েছে।</div>';
+      } else {
+        focusEl.innerHTML = focus.map(c => `
+          <div class="upcoming-item" style="cursor:pointer" onclick="window.location.href='syllabus-${c.id}.html'">
+            <div class="date-badge" style="background:${c.color}1a;color:${c.color}">${c.pct}%</div>
+            <div>
+              <div class="upcoming-title">${c.name}</div>
+              <div class="upcoming-sub">${c.code} · ${toBn(c.total - c.done)} টপিক বাকি</div>
+            </div>
+          </div>`).join('');
+      }
+    }
+  }
+
+  /* ── My Goal: one auto-goal per department, from real progress ── */
+  function refreshGoals() {
+    const grid = document.getElementById('goals-grid');
+    if (!grid) return;
+    const s = computeStats();
+    const depts = {};
+    s.rows.forEach(c => {
+      const d = depts[c.dept] || (depts[c.dept] = { total:0, done:0, count:0 });
+      d.total += c.total; d.done += c.done; d.count++;
     });
-    // Average of all course percentages
-    const pct = Math.round(totalPctSum / COURSES_META.length);
-    const el = document.getElementById('dash-overall-pct');
-    const sub = document.getElementById('dash-overall-sub');
-    if(el) el.textContent = pct+'%';
-    if(sub) sub.textContent = grandDone+'/'+grandTotal+' topic';
+    grid.innerHTML = Object.keys(depts).map(dept => {
+      const d = depts[dept];
+      const pct = d.total ? Math.round(d.done/d.total*100) : 0;
+      const m = DEPT_META[dept] || { icon:'target', color:'var(--green)', bg:'var(--green-light)' };
+      let status, cls;
+      if (pct === 100)      { status = 'সম্পূর্ণ'; cls = 'status-on'; }
+      else if (pct >= 50)   { status = 'ট্র্যাকে';  cls = 'status-on'; }
+      else if (pct > 0)     { status = 'চলছে';     cls = 'status-late'; }
+      else                  { status = 'শুরু হয়নি'; cls = 'status-late'; }
+      return `
+        <div class="goal-card">
+          <div class="goal-top">
+            <div class="goal-icon" style="background:${m.bg}">
+              <span class="material-symbols-outlined" style="color:${m.color}">${m.icon}</span>
+            </div>
+            <div class="goal-info">
+              <div class="goal-title">${dept} সিলেবাস সম্পন্ন</div>
+              <div class="goal-deadline">${toBn(d.count)} টি কোর্স · ${toBn(d.done)}/${toBn(d.total)} টপিক</div>
+            </div>
+            <span class="goal-status ${cls}">${status}</span>
+          </div>
+          <div class="goal-prog-row">
+            <div class="goal-bar"><div class="goal-fill" style="width:${pct}%;background:${m.color}"></div></div>
+            <span class="goal-pct">${pct}%</span>
+          </div>
+        </div>`;
+    }).join('');
   }
 
   // init on load
+  applyProfile();
   refreshDashboard();
+  refreshGoals();
 
   /* ── search ── */
   const searchData = [
@@ -1040,6 +1297,78 @@
     openSidebar();
     setTimeout(() => document.getElementById('sidebar-search-input').focus(), 200);
   });
+
+  /* ══════════════════════════════════════
+     ONBOARDING — runs once, on first visit
+  ══════════════════════════════════════ */
+  (function () {
+    const overlay = document.getElementById('onb-overlay');
+    if (!overlay) return;
+    const DONE_KEY = 'ps_onboarded';
+    const steps = overlay.querySelectorAll('.onb-step');
+    const dots  = overlay.querySelectorAll('.onb-dot');
+    const nameInput = document.getElementById('onb-name');
+    const errEl = document.getElementById('onb-err');
+    let step = 1;
+
+    function show(n) {
+      step = n;
+      steps.forEach(s => s.classList.toggle('active', +s.dataset.step === n));
+      dots.forEach((d, i) => d.classList.toggle('on', i === n - 1));
+      if (n === 1) setTimeout(() => nameInput.focus(), 120);
+    }
+
+    function open() {
+      overlay.classList.add('show');
+      document.body.style.overflow = 'hidden';
+      show(1);
+    }
+
+    function close() {
+      overlay.classList.remove('show');
+      document.body.style.overflow = '';
+      localStorage.setItem(DONE_KEY, '1');
+    }
+
+    function saveName() {
+      const v = nameInput.value.trim();
+      if (!v) { errEl.classList.add('show'); nameInput.focus(); return false; }
+      errEl.classList.remove('show');
+      setStudentName(v);
+      applyProfile();
+      refreshDashboard();
+      // greet them by name on the next step
+      const g = document.getElementById('onb-greet');
+      if (g) g.textContent = `স্বাগতম, ${v.split(' ')[0]}। প্রধান সুবিধাসমূহ`;
+      return true;
+    }
+
+    document.getElementById('onb-next-1').addEventListener('click', () => { if (saveName()) show(2); });
+    nameInput.addEventListener('keydown', e => { if (e.key === 'Enter' && saveName()) show(2); });
+    nameInput.addEventListener('input', () => errEl.classList.remove('show'));
+    document.getElementById('onb-next-2').addEventListener('click', () => show(3));
+    document.getElementById('onb-back-2').addEventListener('click', () => show(1));
+    document.getElementById('onb-back-3').addEventListener('click', () => show(2));
+    document.getElementById('onb-done').addEventListener('click', close);
+    document.getElementById('onb-skip').addEventListener('click', close);
+    document.addEventListener('keydown', e => {
+      if (e.key === 'Escape' && overlay.classList.contains('show')) close();
+    });
+
+    // first visit only
+    if (!localStorage.getItem(DONE_KEY)) open();
+
+    // let the user replay it by clicking their own name in the sidebar
+    const card = document.querySelector('.user-card');
+    if (card) {
+      card.style.cursor = 'pointer';
+      card.title = 'নাম পরিবর্তন করতে ক্লিক করুন';
+      card.addEventListener('click', () => {
+        nameInput.value = localStorage.getItem(NAME_KEY) || '';
+        open();
+      });
+    }
+  })();
 </script>
 </body>
 </html>
